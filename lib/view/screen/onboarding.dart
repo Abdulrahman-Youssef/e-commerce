@@ -1,7 +1,7 @@
-import 'package:ecommerce_app_w/core/constant/color.dart';
 import 'package:flutter/material.dart';
-
-import '../../data/datasource/static/static.dart';
+import '../widget/onboarding/custombutton.dart';
+import '../widget/onboarding/customslider.dart';
+import '../widget/onboarding/dotcontroller.dart';
 
 class OnBoarding extends StatelessWidget {
   const OnBoarding({super.key});
@@ -10,33 +10,34 @@ class OnBoarding extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: SafeArea(
-      child: PageView.builder(
-          itemCount: onBoaridingList.length,
-          itemBuilder: (context, i) => Column(
+      child: Column(
+        children: [
+          const Expanded(
+            flex: 3,
+            child: CustomSlider(),
+          ),
+          Expanded(
+              flex: 1,
+              child: Column(
                 children: [
-                  Text(
-                    onBoaridingList[i].title!,
-                    style: const TextStyle(
-                        fontWeight: FontWeight.bold, fontSize: 18),
-                  ),
+                  const DotControllerOnBoarding(),
                   const SizedBox(
-                    height: 30,
+                    height: 45,
                   ),
-                  Image.asset(onBoaridingList[i].image!,
-                  height: 200,
-                  width: 200,
-                  fit: BoxFit.fill,),
-
-                  Text(
-                    onBoaridingList[i].body!,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      height: 3,
-                      color: AppColor.grey
+                  const CustomButtonOnBoarding(),
+                  Container(
+                      child: MaterialButton(
+                    onPressed: () {},
+                    child: const Text(
+                      "Skip",
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
-                  )
+                  ))
                 ],
-              )),
+              ))
+        ],
+      ),
     ));
   }
 }
