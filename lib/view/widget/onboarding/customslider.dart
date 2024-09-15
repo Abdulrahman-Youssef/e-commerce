@@ -1,14 +1,19 @@
-import 'dart:ui';
+import 'package:ecommerce_app_w/controller/onboarding_controller.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart';
 import '../../../core/constant/color.dart';
 import '../../../data/datasource/static/static.dart';
 
-class CustomSlider extends StatelessWidget {
-  const CustomSlider({super.key});
+class CustomSliderOnBoarding extends GetView<OnBoardingControllerImp> {
+  const CustomSliderOnBoarding({super.key});
 
   @override
   Widget build(BuildContext context) {
     return PageView.builder(
+      controller: controller.pageController,
+        onPageChanged: (val) {
+          controller.onPageChanged(val);
+        },
         itemCount: onBoaridingList.length,
         itemBuilder: (context, i) => Column(
               children: [
