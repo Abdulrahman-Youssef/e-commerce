@@ -1,3 +1,4 @@
+import 'package:ecommerce_app_w/view/screen/login.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
@@ -16,10 +17,16 @@ class OnBoardingControllerImp extends OnBoardingController {
 
   @override
   next() {
+    if(currentPage >= 3 )
+      {
+        Get.off(Login());
+      }
+    print(currentPage);
     currentPage++;
     pageController.animateToPage(
         currentPage, duration: Duration(milliseconds: 900),
         curve: Curves.easeInOut);
+    
   }
 
   @override

@@ -1,10 +1,12 @@
 import 'package:ecommerce_app_w/controller/onboarding_controller.dart';
+import 'package:ecommerce_app_w/view/widget/onboarding/Skipbutton.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import '../widget/onboarding/custombutton.dart';
 import '../widget/onboarding/customslider.dart';
 import '../widget/onboarding/dotcontroller.dart';
+import 'login.dart';
 
 class OnBoarding extends StatelessWidget {
   const OnBoarding({super.key});
@@ -12,11 +14,11 @@ class OnBoarding extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Get.put(OnBoardingControllerImp());
-    return Scaffold(
+    return const Scaffold(
         body: SafeArea(
       child: Column(
         children: [
-          const Expanded(
+          Expanded(
             flex: 3,
             child: CustomSliderOnBoarding(),
           ),
@@ -24,20 +26,12 @@ class OnBoarding extends StatelessWidget {
               flex: 1,
               child: Column(
                 children: [
-                  const DotControllerOnBoarding(),
-                  const SizedBox(
+                  DotControllerOnBoarding(),
+                  SizedBox(
                     height: 45,
                   ),
-                  const CustomButtonOnBoarding(),
-                  Container(
-                      child: MaterialButton(
-                    onPressed: () {},
-                    child: const Text(
-                      "Skip",
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                    ),
-                  ))
+                  CustomButtonOnBoarding(),
+                  SkipbuttonOnBoaridng(),
                 ],
               ))
         ],
