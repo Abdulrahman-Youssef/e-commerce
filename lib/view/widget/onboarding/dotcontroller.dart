@@ -1,5 +1,4 @@
 import 'package:ecommerce_app_w/controller/onboarding_controller.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
 import '../../../data/datasource/static/static.dart';

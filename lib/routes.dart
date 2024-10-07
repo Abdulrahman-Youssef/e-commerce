@@ -4,5 +4,5 @@ import 'package:flutter/cupertino.dart';
 import 'core/constant/approutes.dart';
 
 Map<String, Widget Function(BuildContext)> routes = {
-  AppRoutes.login: (context) => Login(),
+  AppRoutes.login: (context) => const Login(),
 };

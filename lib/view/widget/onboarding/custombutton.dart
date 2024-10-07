@@ -9,7 +9,7 @@ class CustomButtonOnBoarding extends GetView<OnBoardingControllerImp>{
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: 10),
+      margin: const EdgeInsets.only(bottom: 10),
       height: 35,
       width: 300,
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(240)),

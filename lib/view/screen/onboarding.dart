@@ -2,11 +2,9 @@ import 'package:ecommerce_app_w/controller/onboarding_controller.dart';
 import 'package:ecommerce_app_w/view/widget/onboarding/Skipbutton.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import '../widget/onboarding/custombutton.dart';
 import '../widget/onboarding/customslider.dart';
 import '../widget/onboarding/dotcontroller.dart';
-import 'login.dart';
 
 class OnBoarding extends StatelessWidget {
   const OnBoarding({super.key});

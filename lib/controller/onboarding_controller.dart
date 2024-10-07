@@ -1,5 +1,4 @@
 import 'package:ecommerce_app_w/core/constant/approutes.dart';
-import 'package:ecommerce_app_w/view/screen/login.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
