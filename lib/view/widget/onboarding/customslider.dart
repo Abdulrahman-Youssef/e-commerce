@@ -24,6 +24,7 @@ class CustomSliderOnBoarding extends GetView<OnBoardingControllerImp> {
                   height: 30,
                 ),
                 Image.asset(
+
                   onBoaridingList[i].image!,
                   height: 400,
                   width: 200,

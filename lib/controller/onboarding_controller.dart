@@ -23,7 +23,6 @@ class OnBoardingControllerImp extends OnBoardingController {
       {
         Get.offAllNamed(AppRoutes.login);
       }
-    print(currentPage);
     currentPage++;
     pageController.animateToPage(
         currentPage, duration: const Duration(milliseconds: 900),

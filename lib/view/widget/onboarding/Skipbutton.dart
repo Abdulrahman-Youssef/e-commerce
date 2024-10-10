@@ -9,14 +9,13 @@ class SkipbuttonOnBoaridng extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         child: MaterialButton(
-          onPressed: () {
-            Get.off(const Login());
-          },
-          child: const Text(
-            "Skip",
-            style:
-            TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-          ),
-        ));
+      onPressed: () {
+        Get.off(const Login());
+      },
+      child: const Text(
+        "Skip",
+        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+      ),
+    ));
   }
 }
