@@ -1,5 +1,4 @@
 import 'package:ecommerce_app_w/data/model/onboardingmodel.dart';
-
 import '../../../core/constant/imageassets.dart';
 
 List<onBoaridingmodel> onBoaridingList = [
@@ -11,16 +10,16 @@ List<onBoaridingmodel> onBoaridingList = [
   onBoaridingmodel(
       title: "Easy and safe payment",
       body:
-          "we more then 100K Product,Choose \nyour product from Our E-commerce Shop",
+          "Feel safe the ability to redeem your money",
       image: AppImageAssets.onBoardingImageTwo),
   onBoaridingmodel(
       title: "track your oder",
       body:
-          "we more then 100K Product,Choose \nyour product from Our E-commerce Shop",
+          "Track where is order now",
       image: AppImageAssets.onBoardingImageThree),
   onBoaridingmodel(
-      title: "Fast Delevary",
+      title: "Fast Delivery",
       body:
-      "we more then 100K Product,Choose \nyour product from Our E-commerce Shop",
+      "Faster Delivery in the country , before you blink",
       image: AppImageAssets.onBoardingImageFour),
 ];
