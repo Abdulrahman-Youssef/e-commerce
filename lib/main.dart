@@ -1,3 +1,4 @@
+import 'package:ecommerce_app_w/core/constant/texttheme.dart';
 import 'package:ecommerce_app_w/localization/changelocale.dart';
 import 'package:ecommerce_app_w/localization/translation.dart';
 import 'package:ecommerce_app_w/services/services.dart';
@@ -7,8 +8,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'core/constant/color.dart';
 import 'routes.dart';
+import 'view/screen/login.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initialServices();
   runApp(const MyApp());
@@ -16,6 +18,7 @@ void main() async{
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -29,14 +32,8 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.green,
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
-          textTheme: const TextTheme(
-            headlineMedium:
-                TextStyle(fontWeight: FontWeight.bold, fontSize: 20 , fontFamily: "PlayfairDisplay"),
-            bodySmall:
-                TextStyle(height: 3, color: AppColor.grey, fontSize: 18 , fontFamily: "PlayfairDisplay"),
-
-          )),
-      home: const Language(),
+          textTheme: cutomeTheme.textTheme1),
+      home: const Login(),
       routes: routes,
     );
   }
