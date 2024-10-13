@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'core/constant/color.dart';
 import 'routes.dart';
-import 'view/screen/login.dart';
+import 'view/screen/auth/login.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
