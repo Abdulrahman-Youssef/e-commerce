@@ -10,17 +10,17 @@ class CustomAuthText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
          Text(
           text1,
-          style: const TextStyle(fontSize: 12),
+          style: const TextStyle(fontSize: 15),
         ),
         InkWell(
           onTap: onTap,
           child:  Text(
             text2,
-            style: const TextStyle(color: AppColor.primaryColor, fontSize: 14),
+            style: const TextStyle(color: AppColor.primaryColor, fontSize: 17),
           ),
         )
       ],

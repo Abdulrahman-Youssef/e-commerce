@@ -1,4 +1,5 @@
 import 'package:ecommerce_app_w/controller/auth/login_controller.dart';
+import 'package:ecommerce_app_w/core/constant/approutes.dart';
 import 'package:ecommerce_app_w/core/constant/color.dart';
 import 'package:ecommerce_app_w/view/widget/login/Authtextfield.dart';
 import 'package:ecommerce_app_w/view/widget/login/customauthtext.dart';
@@ -62,9 +63,14 @@ class Login extends StatelessWidget {
                   onPressed: () {
 
                   },
-                  child: const Text(
-                    "Forget the password",
-                    textAlign: TextAlign.end,
+                  child:  TextButton(
+                    onPressed: () {
+                      controller.toForgetPassword();
+                    },
+                    child: const Text(
+                      "Forget the password",
+                      textAlign: TextAlign.end,
+                    ),
                   ),
                 ),
               ),

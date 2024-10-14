@@ -2,13 +2,13 @@ import 'package:ecommerce_app_w/core/constant/texttheme.dart';
 import 'package:ecommerce_app_w/localization/changelocale.dart';
 import 'package:ecommerce_app_w/localization/translation.dart';
 import 'package:ecommerce_app_w/services/services.dart';
-import 'package:ecommerce_app_w/view/screen/language.dart';
-import 'package:ecommerce_app_w/view/screen/onboarding.dart';
+import 'package:ecommerce_app_w/view/screen/auth/login.dart';
+import 'package:ecommerce_app_w/view/screen/auth/success_singup.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'core/constant/color.dart';
+
 import 'routes.dart';
-import 'view/screen/auth/login.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -32,8 +32,10 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.green,
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
-          textTheme: cutomeTheme.textTheme1),
+          textTheme: CustomTheme.textTheme1),
+
       home: const Login(),
+      // home: const Test(),
       routes: routes,
     );
   }

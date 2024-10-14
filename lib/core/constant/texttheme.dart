@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 
 import 'color.dart';
 
-class cutomeTheme {
+class CustomTheme {
   static TextTheme textTheme1 =const TextTheme(
+    //appbar title
     titleLarge: TextStyle(
         fontWeight: FontWeight.bold,
-        fontSize: 60,
+        fontSize: 18,
         fontFamily: "PlayfairDisplay"),
     titleMedium: TextStyle(
         fontWeight: FontWeight.bold,

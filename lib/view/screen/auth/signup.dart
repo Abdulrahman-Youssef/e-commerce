@@ -1,4 +1,5 @@
 import 'package:ecommerce_app_w/controller/auth/signup_controller.dart';
+import 'package:ecommerce_app_w/core/constant/approutes.dart';
 import 'package:ecommerce_app_w/core/constant/color.dart';
 import 'package:ecommerce_app_w/view/widget/login/Authtextfield.dart';
 import 'package:ecommerce_app_w/view/widget/login/customauthtext.dart';
@@ -67,22 +68,17 @@ class SignUp extends StatelessWidget {
                   hinttext: "Enter your password",
                   iconData: Icons.lock_outline,
                   labeltext: "Password"),
-              Container(
-                alignment: Alignment.centerRight,
-                child: TextButton(
-                  onPressed: () {},
-                  child: const Text(
-                    "Forget the password",
-                    textAlign: TextAlign.end,
-                  ),
-                ),
+              const SizedBox(height: 40),
+              CustomAuthButton(
+                text: "sign Up",
+                onPressed: () {
+                  controller.signup();
+                },
               ),
-              const CustomAuthButton(
-                text: "Login",
-              ),
+              const SizedBox(height: 30),
               CustomAuthText(
-                text1: "I have account already ",
-                text2: "Sign Up",
+                text1: "I have account already! ",
+                text2: "Login",
                 onTap: () {
                   controller.toLogin();
                 },

@@ -3,8 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 abstract class SignUpController extends GetxController {
-  login();
-
+  signup();
   toLogin();
 }
 
@@ -18,8 +17,8 @@ class SignUpControllerImpl extends SignUpController {
   late TextEditingController password;
 
   @override
-  login() {
-    throw UnimplementedError();
+  signup() {
+    Get.toNamed(AppRoutes.checkEmail);
   }
 
   @override
@@ -39,6 +38,8 @@ class SignUpControllerImpl extends SignUpController {
   @override
   void dispose() {
     email.dispose();
+    password.dispose();
+    name.dispose();
     password.dispose();
     super.dispose();
   }
