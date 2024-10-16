@@ -4,6 +4,7 @@ import 'package:ecommerce_app_w/localization/translation.dart';
 import 'package:ecommerce_app_w/services/services.dart';
 import 'package:ecommerce_app_w/view/screen/auth/login.dart';
 import 'package:ecommerce_app_w/view/screen/auth/success_singup.dart';
+import 'package:ecommerce_app_w/view/screen/language.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -28,13 +29,9 @@ class MyApp extends StatelessWidget {
       translations: MyTranslation(),
       title: 'Flutter Demo',
       locale: controller.language,
-      theme: ThemeData(
-          primarySwatch: Colors.green,
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
-          textTheme: CustomTheme.textTheme1),
+      theme: controller.appTheme,
 
-      home: const Login(),
+      home: const Language(),
       // home: const Test(),
       routes: routes,
     );

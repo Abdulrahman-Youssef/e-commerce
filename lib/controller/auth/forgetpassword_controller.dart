@@ -16,7 +16,7 @@ class ForgetPasswordControllerImpl extends ForgetPasswordController {
 
   @override
   toVerfiyCode() {
-    Get.offNamed(AppRoutes.verfiyCode);
+    Get.offNamed(AppRoutes.verifyCode);
   }
 
   @override

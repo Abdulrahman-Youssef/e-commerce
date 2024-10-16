@@ -4,10 +4,11 @@ class AppRoutes{
   //auth
   static const String login = "/login";
   static const String signUp = "/signup";
-  static const String verfiyCode = "/verfiy";
+  static const String verifyCode = "/verifyCodeForgetPassword";
   static const String forgetPassword = "/forgetPassword";
-  static const String resetPassword = "/ResetPassword";
+  static const String resetPassword = "/resetPassword";
   static const String successRestPassword = "/successRestPassword";
   static const String successSignUp= "/successSignUp";
   static const String checkEmail = "/checkEmail";
+  static const String verifySignUp = "/verifyCodeSignUp";
 }
