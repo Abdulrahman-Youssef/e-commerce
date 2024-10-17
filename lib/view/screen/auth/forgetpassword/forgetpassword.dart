@@ -1,5 +1,6 @@
 import 'package:ecommerce_app_w/controller/auth/forgetpassword_controller.dart';
 import 'package:ecommerce_app_w/core/constant/color.dart';
+import 'package:ecommerce_app_w/core/function/validinput.dart';
 import 'package:ecommerce_app_w/view/widget/login/Authtextfield.dart';
 import 'package:ecommerce_app_w/view/widget/login/customeauthbutton.dart';
 import 'package:ecommerce_app_w/view/widget/login/textbody.dart';
@@ -42,6 +43,10 @@ class ForgetPassword extends StatelessWidget {
 
               const SizedBox(height: 30),
               AuthTextField(
+                  validator: (val){
+                    return validInput(val!, 5, 40, "Email");
+
+                  },
                   mycontroller: controller.email,
                   hinttext: "Enter your email",
                   iconData: Icons.mail_outline,

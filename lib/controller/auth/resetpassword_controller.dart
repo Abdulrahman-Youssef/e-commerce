@@ -4,10 +4,12 @@ import 'package:get/get.dart';
 
 abstract class ResetPasswordController extends GetxController {
   resetPassword();
+
   toSuccessResetPassword();
 }
 
 class ResetPasswordControllerImpl extends ResetPasswordController {
+  GlobalKey<FormState> formState = GlobalKey<FormState>();
   late TextEditingController password;
   late TextEditingController rePassword;
 
@@ -18,7 +20,12 @@ class ResetPasswordControllerImpl extends ResetPasswordController {
 
   @override
   toSuccessResetPassword() {
-    Get.offNamed(AppRoutes.successRestPassword);
+    var formData = formState.currentState;
+    if(formData!.validate()) {
+      Get.offNamed(AppRoutes.successRestPassword);
+    }else{
+
+    }
   }
 
   @override

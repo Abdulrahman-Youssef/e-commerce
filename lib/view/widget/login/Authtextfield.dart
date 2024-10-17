@@ -5,17 +5,20 @@ class AuthTextField extends StatelessWidget {
   final String labeltext;
   final IconData iconData;
   final TextEditingController? mycontroller;
+  final String? Function(String?)? validator;
 
   const AuthTextField(
       {super.key,
       required this.hinttext,
       required this.labeltext,
       required this.iconData,
-     required this.mycontroller});
+      required this.mycontroller,
+      required this.validator});
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
+      validator: validator,
       controller: mycontroller,
       decoration: InputDecoration(
           suffixIcon: Icon(iconData),
