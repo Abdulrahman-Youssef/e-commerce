@@ -13,7 +13,8 @@ class ForgetPassword extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ForgetPasswordControllerImpl controller = Get.put(ForgetPasswordControllerImpl());
+    ForgetPasswordControllerImpl controller =
+        Get.put(ForgetPasswordControllerImpl());
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -30,35 +31,39 @@ class ForgetPassword extends StatelessWidget {
         color: AppColor.backgroundcolor,
         padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
         child: Center(
-          child: ListView(
-            children: [
-              const TextTitle(
-                title: "check email",
-              ),
-              const SizedBox(height: 20,),
-              const TextBody(
-                bodyText:
-                "enter your email and wait for the verification code",
-              ),
-
-              const SizedBox(height: 30),
-              AuthTextField(
-                  validator: (val){
+          child: Form(
+            key: controller.formState,
+            child: ListView(
+              children: [
+                const TextTitle(
+                  title: "check email",
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                const TextBody(
+                  bodyText: "enter your email and wait for the verification code",
+                ),
+                const SizedBox(height: 30),
+                AuthTextField(
+                  validator: (val) {
                     return validInput(val!, 5, 40, "Email");
-
                   },
                   mycontroller: controller.email,
                   hinttext: "Enter your email",
                   iconData: Icons.mail_outline,
-                  labeltext: "Email"),
-              const SizedBox(
-                height: 40,
-              ),
-              CustomAuthButton(
-                text: "check",
-                onPressed: controller.toVerfiyCode,
-              ),
-            ],
+                  labeltext: "Email",
+                  isNumber: false,
+                ),
+                const SizedBox(
+                  height: 40,
+                ),
+                CustomAuthButton(
+                  text: "check",
+                  onPressed: controller.toVerfiyCode,
+                ),
+              ],
+            ),
           ),
         ),
       ),

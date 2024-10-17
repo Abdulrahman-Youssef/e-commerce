@@ -5,7 +5,8 @@ class AuthTextField extends StatelessWidget {
   final String labeltext;
   final IconData iconData;
   final TextEditingController? mycontroller;
-  final String? Function(String?)? validator;
+  final String? Function(String?) validator;
+  final bool isNumber;
 
   const AuthTextField(
       {super.key,
@@ -13,11 +14,15 @@ class AuthTextField extends StatelessWidget {
       required this.labeltext,
       required this.iconData,
       required this.mycontroller,
-      required this.validator});
+      required this.validator,
+      required this.isNumber});
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      keyboardType: isNumber
+          ? const TextInputType.numberWithOptions(decimal: true)
+          : TextInputType.text,
       validator: validator,
       controller: mycontroller,
       decoration: InputDecoration(

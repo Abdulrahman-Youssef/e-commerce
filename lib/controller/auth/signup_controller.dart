@@ -4,11 +4,11 @@ import 'package:get/get.dart';
 
 abstract class SignUpController extends GetxController {
   signup();
+
   toLogin();
 }
 
 class SignUpControllerImpl extends SignUpController {
-
   GlobalKey<FormState> fromState = GlobalKey<FormState>();
 
   late TextEditingController name;
@@ -21,19 +21,18 @@ class SignUpControllerImpl extends SignUpController {
 
   @override
   signup() {
-    var formData = fromState.currentState;
-    if(formData!.validate()){
-      Get.toNamed(AppRoutes.checkEmail);
-      print("valid");
-    }else{
+    if (fromState.currentState!.validate()) {
+      Get.toNamed(AppRoutes.verifyCodeSignUp);
+      Get.delete<SignUpControllerImpl>();
+    } else {
       print("Not Valid");
     }
   }
 
   @override
   toLogin() {
-
     Get.offNamed(AppRoutes.login);
+    Get.delete<SignUpControllerImpl>();
   }
 
   @override
@@ -53,6 +52,4 @@ class SignUpControllerImpl extends SignUpController {
     password.dispose();
     super.dispose();
   }
-
-
 }

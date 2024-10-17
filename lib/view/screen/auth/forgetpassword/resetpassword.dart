@@ -54,7 +54,7 @@ class ResetPassword extends StatelessWidget {
                     mycontroller: controller.password,
                     hinttext: "Enter your password",
                     iconData: Icons.mail_outline,
-                    labeltext: "password"),
+                    labeltext: "password", isNumber: false,),
                 const SizedBox(height: 30),
                 AuthTextField(
                     validator: (val) {
@@ -63,7 +63,7 @@ class ResetPassword extends StatelessWidget {
                     mycontroller: controller.rePassword,
                     hinttext: "Enter your re-password",
                     iconData: Icons.mail_outline,
-                    labeltext: "Re-password"),
+                    labeltext: "Re-password", isNumber: false,),
                 const SizedBox(height: 35),
                 CustomAuthButton(
                   text: "check",

@@ -29,6 +29,7 @@ class LoginControllerImpl extends LoginController {
   @override
   toSignUp() {
     Get.offNamed(AppRoutes.signUp);
+    Get.delete<LoginControllerImpl>();
   }
 
   @override

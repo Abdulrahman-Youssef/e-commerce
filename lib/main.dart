@@ -10,7 +10,6 @@ import 'package:get/get.dart';
 
 import 'routes.dart';
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initialServices();
@@ -30,7 +29,6 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       locale: controller.language,
       theme: controller.appTheme,
-
       home: const Language(),
       // home: const Test(),
       routes: routes,
