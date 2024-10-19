@@ -1,4 +1,5 @@
 import 'package:ecommerce_app_w/core/constant/approutes.dart';
+import 'package:ecommerce_app_w/core/constant/color.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
@@ -6,6 +7,7 @@ abstract class LoginController extends GetxController {
   login();
   toSignUp();
   toForgetPassword();
+  showPassword();
 }
 
 class LoginControllerImpl extends LoginController {
@@ -14,6 +16,16 @@ class LoginControllerImpl extends LoginController {
 
   late TextEditingController email ;
   late TextEditingController password;
+  bool isShowPassword = true;
+  Color iconColor = AppColor.grey ;
+
+
+  @override
+  showPassword() {
+    isShowPassword = isShowPassword == true ? false : true;
+    iconColor = iconColor == AppColor.grey ? AppColor.primaryColor : AppColor.grey;
+    update();
+  }
 
   @override
   login() {

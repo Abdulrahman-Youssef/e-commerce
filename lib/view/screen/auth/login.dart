@@ -73,16 +73,21 @@ class Login extends StatelessWidget {
                     isNumber: false,
                   ),
                   const SizedBox(height: 35),
-                  AuthTextField(
-                    validator: (val) {
-                      return validInput(val!, 8, 30, "Password");
-                    },
-                    mycontroller: controller.password,
-                    hinttext: "Enter your password",
-                    iconData: Icons.lock_outline,
-                    labeltext: "Password",
-                    isNumber: false,
-                  ),
+                  GetBuilder<LoginControllerImpl>(
+                      //password
+                      builder: (controller) => AuthTextField(
+                          iconColor: controller.iconColor,
+                            isObscure: controller.isShowPassword,
+                            onTapIcon: controller.showPassword,
+                            validator: (val) {
+                              return validInput(val!, 8, 30, "Password");
+                            },
+                            mycontroller: controller.password,
+                            hinttext: "Enter your password",
+                            iconData: Icons.lock_outline,
+                            labeltext: "Password",
+                            isNumber: false,
+                          )),
                   Container(
                     alignment: Alignment.centerRight,
                     child: TextButton(

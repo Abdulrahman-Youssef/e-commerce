@@ -7,26 +7,37 @@ class AuthTextField extends StatelessWidget {
   final TextEditingController? mycontroller;
   final String? Function(String?) validator;
   final bool isNumber;
+  final bool isObscure;
+  final void Function()? onTapIcon;
+  final Color? iconColor;
 
-  const AuthTextField(
-      {super.key,
-      required this.hinttext,
-      required this.labeltext,
-      required this.iconData,
-      required this.mycontroller,
-      required this.validator,
-      required this.isNumber});
+  const AuthTextField({
+    super.key,
+    required this.hinttext,
+    required this.labeltext,
+    required this.iconData,
+    required this.mycontroller,
+    required this.validator,
+    required this.isNumber,
+    this.isObscure = false,
+    this.onTapIcon,
+    this.iconColor,
+  });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      obscureText: isObscure,
       keyboardType: isNumber
           ? const TextInputType.numberWithOptions(decimal: true)
           : TextInputType.text,
       validator: validator,
       controller: mycontroller,
       decoration: InputDecoration(
-          suffixIcon: Icon(iconData),
+          suffixIcon: TextButton(
+            onPressed: onTapIcon,
+            child: Icon(iconData , color: iconColor,),
+          ),
           hintText: hinttext,
           hintStyle: Theme.of(context).textTheme.bodySmall,
           contentPadding:
