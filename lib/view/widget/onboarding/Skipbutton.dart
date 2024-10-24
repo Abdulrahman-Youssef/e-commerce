@@ -1,8 +1,9 @@
+import 'package:ecommerce_app_w/controller/onboarding_controller.dart';
 import 'package:ecommerce_app_w/view/screen/auth/login.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class SkipbuttonOnBoaridng extends StatelessWidget {
+class SkipbuttonOnBoaridng extends GetView<OnBoardingControllerImp> {
   const SkipbuttonOnBoaridng({super.key});
 
   @override
@@ -10,8 +11,8 @@ class SkipbuttonOnBoaridng extends StatelessWidget {
     return Container(
         child: MaterialButton(
       onPressed: () {
-        Get.off(const Login());
-      },
+        controller.skip();
+        },
       child: const Text(
         "Skip",
         style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),

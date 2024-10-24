@@ -1,3 +1,4 @@
+import 'package:ecommerce_app_w/core/function/checkinternet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 
@@ -9,6 +10,19 @@ class Test extends StatefulWidget {
 }
 
 class _TestState extends State<Test> {
+
+  var res;
+  initialData()async {
+    res = await checkinternet();
+    print(res);
+  }
+  @override
+  void initState() {
+    initialData();
+    print(res);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
