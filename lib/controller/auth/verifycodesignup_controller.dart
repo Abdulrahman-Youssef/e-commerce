@@ -1,4 +1,7 @@
+import 'package:ecommerce_app_w/core/class/statusRequest.dart';
 import 'package:ecommerce_app_w/core/constant/approutes.dart';
+import 'package:ecommerce_app_w/core/function/handlingdatacontroller.dart';
+import 'package:ecommerce_app_w/data/datasource/remote/auth/verifycodesignup.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
@@ -9,8 +12,12 @@ abstract class VerifyCodeSignUpController extends GetxController {
 }
 
 class VerifyCodeSignUpControllerImpl extends VerifyCodeSignUpController {
-  late String verifyCode;
 
+  VerifyCodeSignupData verifyCodeSignupData = VerifyCodeSignupData(Get.find());
+
+  late String verifyCode;
+  String? email ;
+  StatusRequest? statusRequest ;
   @override
   checkCode() {
     throw UnimplementedError();
@@ -21,13 +28,26 @@ class VerifyCodeSignUpControllerImpl extends VerifyCodeSignUpController {
     Get.toNamed(AppRoutes.login);
   }
   @override
-  toSuccessSignUp() {
+  toSuccessSignUp() async{
+    statusRequest = StatusRequest.loading;
+    update();
+    var response = await verifyCodeSignupData.postData(email!, verifyCode);
+    print("response $response");
+    statusRequest = handlingData(response);
+    if (StatusRequest.success == statusRequest) {
+      if (response["status"] == "success") {
+        Get.offNamed(AppRoutes.successSignUp );
+      }else{
+        print ("error in verifycodesignup_controller");
+      }
+    }
+
     Get.offNamed(AppRoutes.successSignUp);
   }
 
   @override
   void onInit() {
-
+    email = Get.arguments["email"];
     super.onInit();
   }
 

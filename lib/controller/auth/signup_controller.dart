@@ -19,7 +19,7 @@ class SignUpControllerImpl extends SignUpController {
   late TextEditingController email;
   late TextEditingController password;
   List data = [];
-  late StatusRequest statusRequest;
+  StatusRequest? statusRequest;
 
   SignupData signupData = SignupData(Get.find());
 
@@ -27,13 +27,16 @@ class SignUpControllerImpl extends SignUpController {
   signup() async{
     if (fromState.currentState!.validate()) {
       statusRequest = StatusRequest.loading;
+      update();
       var response = await signupData.postData(name.text, password.text, email.text, phone.text);
       print("response $response");
       statusRequest = handlingData(response);
       if (StatusRequest.success == statusRequest) {
         if (response["status"] == "success") {
           // data.addAll(response["data"]);
-          Get.offNamed(AppRoutes.verifyCodeSignUp);
+          Get.offNamed(AppRoutes.verifyCodeSignUp , arguments: {
+            "email" : email
+          } );
 
         } else {
           Get.defaultDialog(title: "Waring" ,middleText: "phone or email is already exist");
