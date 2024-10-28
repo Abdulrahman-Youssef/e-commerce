@@ -32,12 +32,13 @@ class SignUpControllerImpl extends SignUpController {
       statusRequest = handlingData(response);
       if (StatusRequest.success == statusRequest) {
         if (response["status"] == "success") {
-          data.addAll(response["data"]);
+          // data.addAll(response["data"]);
           Get.offNamed(AppRoutes.verifyCodeSignUp);
 
         } else {
           Get.defaultDialog(title: "Waring" ,middleText: "phone or email is already exist");
           statusRequest = StatusRequest.failure;
+          update();
         }
       }
       update();

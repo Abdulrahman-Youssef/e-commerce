@@ -6,7 +6,7 @@ class AppLink {
   //pages 
   static const String test = "$serverEmulator/test.php";
   // auth folder
-   final String authFolder = "$serverEmulator/auth";
-  static const String signup = "/signup.php";
+   static const  String authFolder = "$serverEmulator/auth";
+  static const String signup = "$authFolder/signup.php";
 
 }
