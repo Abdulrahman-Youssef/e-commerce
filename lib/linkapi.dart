@@ -8,5 +8,6 @@ class AppLink {
   // auth folder
    static const  String authFolder = "$serverEmulator/auth";
   static const String signup = "$authFolder/signup.php";
+  static const String verifyCodeSignUp = "$authFolder/verifycode.php";
 
 }

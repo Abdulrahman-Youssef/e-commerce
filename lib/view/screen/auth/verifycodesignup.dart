@@ -12,7 +12,7 @@ class VerfiyCodeSignUp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Get.put(VerifyCodeSignUpControllerImpl());
+    Get.put(VerifyCodeSignUpControllerImpl());
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -57,7 +57,9 @@ class VerfiyCodeSignUp extends StatelessWidget {
                           showFieldAsBox: true,
                           onCodeChanged: (String code) {},
                           onSubmit: (String verificationCode) {
+                           controller.verifyCode = verificationCode;
                             controller.toSuccessSignUp();
+
                           }, // end onSubmit
                         ),
                       ],

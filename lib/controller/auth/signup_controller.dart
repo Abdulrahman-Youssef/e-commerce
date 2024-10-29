@@ -35,7 +35,7 @@ class SignUpControllerImpl extends SignUpController {
         if (response["status"] == "success") {
           // data.addAll(response["data"]);
           Get.offNamed(AppRoutes.verifyCodeSignUp , arguments: {
-            "email" : email
+            "email" : email.text
           } );
 
         } else {

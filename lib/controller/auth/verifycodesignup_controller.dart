@@ -32,17 +32,20 @@ class VerifyCodeSignUpControllerImpl extends VerifyCodeSignUpController {
     statusRequest = StatusRequest.loading;
     update();
     var response = await verifyCodeSignupData.postData(email!, verifyCode);
-    print("response $response");
+    print("verifyCodesignUpController response ${response.toString()}");
     statusRequest = handlingData(response);
     if (StatusRequest.success == statusRequest) {
       if (response["status"] == "success") {
         Get.offNamed(AppRoutes.successSignUp );
       }else{
-        print ("error in verifycodesignup_controller");
+        Get.defaultDialog(title: "error" , middleText: "wrong code");
+        update();
+        print("error in verifycodesignup_controller");
       }
+    }else{
+      Get.defaultDialog(title: "error" , middleText: "server error");
+      update();
     }
-
-    Get.offNamed(AppRoutes.successSignUp);
   }
 
   @override
