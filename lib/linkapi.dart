@@ -11,4 +11,10 @@ class AppLink {
   static const String verifyCodeSignUp = "$authFolder/verifycode.php";
   static const String login = "$authFolder/login.php";
 
+  // forgetpassowrd folder
+  static const String forgetPasswordFolder = "$serverEmulator/forgetpassword";
+  static const String checkEmail = "$forgetPasswordFolder/checkemail.php";
+  static const String verifycode = "$forgetPasswordFolder/verifycode.php";
+  static const String resetpassword = "$forgetPasswordFolder/resetpassword.php";
+
 }

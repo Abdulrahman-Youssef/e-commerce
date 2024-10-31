@@ -48,27 +48,34 @@ class ResetPassword extends StatelessWidget {
                 ),
                 const SizedBox(height: 30),
                 AuthTextField(
-                    validator: (val) {
-                      return validInput(val!, 8, 40, "Password");
-                    },
-                    mycontroller: controller.password,
-                    hinttext: "Enter your password",
-                    iconData: Icons.mail_outline,
-                    labeltext: "password", isNumber: false,),
+                  validator: (val) {
+                    return validInput(val!, 8, 40, "Password");
+                  },
+                  mycontroller: controller.password,
+                  hinttext: "Enter your password",
+                  iconData: Icons.mail_outline,
+                  labeltext: "password",
+                  isNumber: false,
+                ),
                 const SizedBox(height: 30),
                 AuthTextField(
-                    validator: (val) {
-                      return validInput(val!, 8, 40, "Password");
-                    },
-                    mycontroller: controller.rePassword,
-                    hinttext: "Enter your re-password",
-                    iconData: Icons.mail_outline,
-                    labeltext: "Re-password", isNumber: false,),
+                  validator: (val) {
+                    return validInput(val!, 8, 40, "Password");
+                  },
+                  mycontroller: controller.rePassword,
+                  hinttext: "Enter your re-password",
+                  iconData: Icons.mail_outline,
+                  labeltext: "Re-password",
+                  isNumber: false,
+                ),
                 const SizedBox(height: 35),
                 CustomAuthButton(
                   text: "check",
-                  onPressed: () {
-                    controller.toSuccessResetPassword();
+                  onPressed: () async {
+                    bool result = await controller.resetPassword();
+                    if (result) {
+                      controller.toSuccessResetPassword();
+                    }
                   },
                 ),
               ],

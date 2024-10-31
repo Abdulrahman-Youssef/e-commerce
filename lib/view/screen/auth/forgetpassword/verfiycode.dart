@@ -14,8 +14,7 @@ class VerfiyCode extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    VerifyCodeControllerImpl controller =
-        Get.put(VerifyCodeControllerImpl());
+    VerifyCodeControllerImpl controller = Get.put(VerifyCodeControllerImpl());
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -52,8 +51,12 @@ class VerfiyCode extends StatelessWidget {
                 borderColor: const Color(0xFF512DA8),
                 showFieldAsBox: true,
                 onCodeChanged: (String code) {},
-                onSubmit: (String verificationCode) {
-                  controller.toResetPassword();
+                onSubmit: (String verificationCode) async {
+                  controller.verifyCode = verificationCode;
+                  bool result = await controller.checkCode();
+                  if (result) {
+                    controller.toResetPassword();
+                  }
                 }, // end onSubmit
               ),
             ],
