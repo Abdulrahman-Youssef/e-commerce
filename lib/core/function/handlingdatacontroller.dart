@@ -1,9 +1,21 @@
 import 'package:ecommerce_app_w/core/class/statusRequest.dart';
 
-handlingData(response) {
+StatusRequest handlingData(response) {
   if (response is StatusRequest) {
     return response;
-  } else {
-    return StatusRequest.success;
   }
+  // else {
+  //   return StatusRequest.success;
+  // }
+  ////
+
+  else {
+  if(response["status"] == "success"){
+  return  StatusRequest.success;
+  }else{
+    return StatusRequest.failure ;
+  }
+  }
+
+
 }
