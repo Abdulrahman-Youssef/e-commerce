@@ -2,6 +2,8 @@ import 'package:ecommerce_app_w/core/class/statusRequest.dart';
 import 'package:ecommerce_app_w/core/constant/approutes.dart';
 import 'package:ecommerce_app_w/core/constant/color.dart';
 import 'package:ecommerce_app_w/data/datasource/remote/auth/login.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
@@ -28,7 +30,7 @@ class LoginControllerImpl extends LoginController {
   bool isShowPassword = true;
   Color iconColor = AppColor.grey;
 
-  late StatusRequest? statusRequest;
+  late StatusRequest statusRequest = StatusRequest.notAssigned;
 
   @override
   showPassword() {
@@ -42,8 +44,10 @@ class LoginControllerImpl extends LoginController {
   login() async {
     if (fromState.currentState!.validate()) {
       statusRequest = StatusRequest.loading;
+      update();
       var response = await loginData.postData(email.text, password.text);
       statusRequest = handlingData(response);
+      update();
       if (statusRequest == StatusRequest.success) {
         print("statusRequest in login controller : ${statusRequest}");
         if (response["status"] == "success") {
@@ -51,11 +55,24 @@ class LoginControllerImpl extends LoginController {
               title: "correct", middleText: "correct email and password");
           Get.offAllNamed(AppRoutes.home);
         } else {
-          Get.defaultDialog(
-              title: "Wrong", middleText: "Wrong email and password");
+          Future.delayed(
+            const Duration(microseconds: 500),
+            () {
+              statusRequest = StatusRequest.notAssigned;
+              update();
+            },
+          );
+          // "Wrong email and password"
         }
-      }else{
-        Get.defaultDialog(title: "error" , middleText: "${statusRequest}");
+      } else {
+        Future.delayed(
+          const Duration(seconds: 2),
+          () {
+            statusRequest = StatusRequest.notAssigned;
+            update();
+            // "Wrong email and password"
+          },
+        );
       }
     } else {
       print("Not Valid");
@@ -74,6 +91,10 @@ class LoginControllerImpl extends LoginController {
 
   @override
   void onInit() {
+    FirebaseMessaging.instance.getToken().then((value) {
+      print("the token is : ${value}");
+      String? token = value;
+    });
     email = TextEditingController();
     password = TextEditingController();
     super.onInit();
