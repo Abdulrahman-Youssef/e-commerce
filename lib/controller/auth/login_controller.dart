@@ -1,7 +1,9 @@
 import 'package:ecommerce_app_w/core/class/statusRequest.dart';
 import 'package:ecommerce_app_w/core/constant/approutes.dart';
 import 'package:ecommerce_app_w/core/constant/color.dart';
+import 'package:ecommerce_app_w/core/constant/sharedprefkeys.dart';
 import 'package:ecommerce_app_w/data/datasource/remote/auth/login.dart';
+import 'package:ecommerce_app_w/services/services.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
@@ -20,6 +22,7 @@ abstract class LoginController extends GetxController {
 }
 
 class LoginControllerImpl extends LoginController {
+  MyServices myServices = Get.find();
   LoginData loginData = LoginData(Get.find());
 
   GlobalKey<FormState> fromState = GlobalKey<FormState>();
@@ -51,8 +54,20 @@ class LoginControllerImpl extends LoginController {
       if (statusRequest == StatusRequest.success) {
         print("statusRequest in login controller : ${statusRequest}");
         if (response["status"] == "success") {
-          Get.defaultDialog(
-              title: "correct", middleText: "correct email and password");
+          // Get.defaultDialog(
+          //     title: "correct", middleText: "correct email and password");
+
+          myServices.sharedpref.setString(
+              AppSharedPrefKeys.userName, response["data"]["users_name"]);
+          myServices.sharedpref
+              .setInt(AppSharedPrefKeys.userID, response["data"]["users_id"]);
+          myServices.sharedpref.setString(
+              AppSharedPrefKeys.userPhone, response["data"]["users_phone"]);
+          myServices.sharedpref.setString(
+              AppSharedPrefKeys.userEmail, response["data"]["users_email"]);
+          myServices.sharedpref.setString(
+              AppSharedPrefKeys.step, "2");
+
           Get.offAllNamed(AppRoutes.home);
         } else {
           Future.delayed(

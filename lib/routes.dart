@@ -24,10 +24,12 @@ List<GetPage<dynamic>>? routes = [
     page: () => const Language(),
     middlewares: [myMiddleware()],
   ),
+
   // GetPage(
   //     name: "/",
   //     page: () => const TestView()),
   // auth routes
+
   GetPage(
     name: AppRoutes.login,
     page: () => const Login(),

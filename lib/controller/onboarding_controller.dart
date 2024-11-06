@@ -25,7 +25,7 @@ class OnBoardingControllerImp extends OnBoardingController {
   @override
   next() {
     if (currentPage >= onBoaridingList.length - 1) {
-      myServices.sharedpref.setBool(AppSharedPrefKeys.isOnboardingSeen, true);
+      myServices.sharedpref.setString(AppSharedPrefKeys.step, "1");
       Get.offAllNamed(AppRoutes.login);
     }
     currentPage++;
@@ -48,7 +48,7 @@ class OnBoardingControllerImp extends OnBoardingController {
 
   @override
   skip() {
-    myServices.sharedpref.setBool(AppSharedPrefKeys.isOnboardingSeen, true);
+    myServices.sharedpref.setString(AppSharedPrefKeys.step, "1");
     Get.offAllNamed(AppRoutes.login);
   }
 }
