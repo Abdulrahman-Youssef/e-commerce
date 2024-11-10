@@ -5,6 +5,7 @@ class AppLink {
   static const String serverPhysicalDevice = "http://192.168.1.2/ecommerce_w";
   //pages 
   static const String test = "$serverEmulator/test.php";
+  static const String home = "$serverEmulator/home.php";
   // auth folder
    static const  String authFolder = "$serverEmulator/auth";
   static const String signup = "$authFolder/signup.php";
