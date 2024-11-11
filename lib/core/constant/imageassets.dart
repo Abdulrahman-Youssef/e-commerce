@@ -2,6 +2,7 @@ class AppImageAssets {
   //roots
   static const String rootImage = "assets/images";
   static const String rootImageCategories ="assets/images/categories";
+  static const String rootImageItems ="assets/images/items";
   static const String rootlottie= "assets/lottie";
   //onboarding
   static const String logo  = "$rootImage/logo.png";
@@ -21,6 +22,7 @@ class AppImageAssets {
   static const String laptop = "$rootImageCategories/Laptop category1.png";
   static const String phones = "$rootImageCategories/phone category1.png";
   static const String shoes = "$rootImageCategories/shoes category.png";
+  // items
 
 
 }

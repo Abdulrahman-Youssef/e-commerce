@@ -22,6 +22,7 @@ class HomeControllerImplementation extends HomeController {
   StatusRequest statusRequest = StatusRequest.notAssigned;
 
   List categories = [];
+  List items = [];
 
   getData() async {
     statusRequest = StatusRequest.loading;
@@ -31,6 +32,7 @@ class HomeControllerImplementation extends HomeController {
     if (statusRequest == StatusRequest.success) {
       if (response['status'] == 'success') {
         categories.addAll(response["categories"]);
+        items.addAll(response["items"]);
         Get.defaultDialog(
             title: "success fetched data",
             middleText: "${categories[3]["categories_image"]}");

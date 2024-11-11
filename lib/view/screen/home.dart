@@ -46,7 +46,7 @@ class HomePage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const ProductList(),
+                    ProductList(controller: controller,),
                   ]),
                 ))));
   }

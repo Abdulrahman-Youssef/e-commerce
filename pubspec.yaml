@@ -106,6 +106,7 @@ flutter:
   assets:
     - assets/images/
     - assets/images/categories/
+    - assets/images/items/
     - assets/lottie/
 
 

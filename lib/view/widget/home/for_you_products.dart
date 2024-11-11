@@ -1,8 +1,10 @@
+import 'package:ecommerce_app_w/controller/home_controller.dart';
 import 'package:ecommerce_app_w/core/constant/imageassets.dart';
 import 'package:flutter/material.dart';
 
 class ProductList extends StatelessWidget {
-  const ProductList({super.key});
+  final HomeControllerImplementation controller;
+  const ProductList({super.key, required this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,7 @@ class ProductList extends StatelessWidget {
         ),
         child: ListView.builder(
           scrollDirection: Axis.horizontal,
-          itemCount: 3,
+          itemCount: controller.items.length,
           itemBuilder: (context, index) => Container(
             margin:
                 const EdgeInsets.only(top: 10, bottom: 10, right: 8, left: 8),
@@ -41,7 +43,7 @@ class ProductList extends StatelessWidget {
                   height: 70,
                   margin: const EdgeInsets.only(top: 10),
                   child: Image.asset(
-                    AppImageAssets.logo, // Replace with your asset path
+                    "${AppImageAssets.rootImageItems}/${controller.items[index]["items_image"]}",
                     fit: BoxFit.contain,
                   ),
                 ),
@@ -49,12 +51,12 @@ class ProductList extends StatelessWidget {
                 Container(
                   width: 100,
                   alignment: Alignment.center,
-                  child: const Text(
-                    "The name is too long",
+                  child: Text(
+                    "${controller.items[index]["items_name"]}",
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     textAlign: TextAlign.center,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w500,
                     ),
