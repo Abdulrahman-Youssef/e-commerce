@@ -7,6 +7,7 @@ import 'package:ecommerce_app_w/services/services.dart';
 import 'package:ecommerce_app_w/view/widget/home/ScrollableCategoryGallery.dart';
 import 'package:ecommerce_app_w/view/widget/home/billboards.dart';
 import 'package:ecommerce_app_w/view/widget/home/customeappbar.dart';
+import 'package:ecommerce_app_w/view/widget/home/for_you_products.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -35,6 +36,17 @@ class HomePage extends StatelessWidget {
                     ScrollableCategoryGallery(
                       controller: controller,
                     ),
+                    Container(
+                      margin: const EdgeInsets.only(top: 7, left: 10),
+                      child: const Text(
+                        "Products for you",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    const ProductList(),
                   ]),
                 ))));
   }

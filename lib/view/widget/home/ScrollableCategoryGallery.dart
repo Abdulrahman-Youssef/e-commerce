@@ -19,7 +19,7 @@ class ScrollableCategoryGallery extends StatelessWidget {
             color: Colors.grey.withOpacity(0.2), // Soft shadow for depth
             spreadRadius: 5,
             blurRadius: 10,
-            offset: Offset(0, 3), // Shadow position
+            offset: const Offset(0, 3), // Shadow position
           ),
         ],
       ),
