@@ -13,7 +13,7 @@ class myMiddleware extends GetMiddleware{
   @override
   RouteSettings? redirect(String? route) {
     if(myServices.sharedpref.getString(AppSharedPrefKeys.step) == "2"){
-      return const RouteSettings(name: AppRoutes.home);
+      return const RouteSettings(name: AppRoutes.homeScreen);
     }else if(myServices.sharedpref.getString(AppSharedPrefKeys.step) == "1"){
       return const RouteSettings(name: AppRoutes.login);
     }

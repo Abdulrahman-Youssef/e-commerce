@@ -6,6 +6,7 @@ import 'package:ecommerce_app_w/core/constant/imageassets.dart';
 import 'package:ecommerce_app_w/services/services.dart';
 import 'package:ecommerce_app_w/view/widget/home/ScrollableCategoryGallery.dart';
 import 'package:ecommerce_app_w/view/widget/home/billboards.dart';
+import 'package:ecommerce_app_w/view/widget/home/custom_title.dart';
 import 'package:ecommerce_app_w/view/widget/home/customeappbar.dart';
 import 'package:ecommerce_app_w/view/widget/home/for_you_products.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +19,6 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    HomeControllerImplementation controller =
         Get.put(HomeControllerImplementation());
     MyServices myServices = Get.find();
 
@@ -33,19 +33,11 @@ class HomePage extends StatelessWidget {
                   child: ListView(children: [
                     const CustomAppBar(),
                     const Billboard(),
+                    const CustomTitle(title:"categories") ,
                     ScrollableCategoryGallery(
                       controller: controller,
                     ),
-                    Container(
-                      margin: const EdgeInsets.only(top: 7, left: 10),
-                      child: const Text(
-                        "Products for you",
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
+                    const CustomTitle(title:"product for you") ,
                     ProductList(controller: controller,),
                   ]),
                 ))));
