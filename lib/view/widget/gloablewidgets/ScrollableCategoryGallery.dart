@@ -9,45 +9,52 @@ class ScrollableCategoryGallery extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    int? selectedCategory;
     return Container(
-      height: 120, // Slightly taller to give space for rounded borders and padding
+      height: 120,
       decoration: BoxDecoration(
-        color: AppColor.backgroundcolor.withOpacity(0.9), // Light, relaxing background color
-        borderRadius: BorderRadius.circular(15), // Rounded corners for outer container
+        color: AppColor.backgroundcolor.withOpacity(0.9),
+        borderRadius: BorderRadius.circular(15),
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.2), // Soft shadow for depth
+            color: Colors.grey.withOpacity(0.2),
             spreadRadius: 5,
             blurRadius: 10,
-            offset: const Offset(0, 3), // Shadow position
+            offset: const Offset(0, 3),
           ),
         ],
       ),
-      padding: const EdgeInsets.symmetric(vertical: 10), // Add vertical padding
+      padding: const EdgeInsets.symmetric(vertical: 10),
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         itemCount: controller.categories.length,
         itemBuilder: (context, index) {
-          return Container(
-            padding: const EdgeInsets.all(8), // Padding inside each item for breathing room
-            margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
-            decoration: BoxDecoration(
-              color: Colors.white, // Light background for item containers
-              borderRadius: BorderRadius.circular(12), // Rounded corners
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.15),
-                  spreadRadius: 2,
-                  blurRadius: 5,
-                  offset: Offset(0, 2), // Subtle shadow for each item
-                ),
-              ],
-            ),
-            child: Image.asset(
-              "${AppImageAssets.rootImageCategories}/${controller.categories[index]["categories_image"]}",
-              fit: BoxFit.contain,
-              width: 50,
-              height: 50, // Set consistent width and height for images
+          return InkWell(
+            onTap: (){
+               selectedCategory = index;
+              controller.goToItems(controller.categories, index);
+            },
+            child: Container(
+              padding: const EdgeInsets.all(8),
+              margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
+              decoration: BoxDecoration(
+                color:Colors.white,
+                borderRadius: BorderRadius.circular(12),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.15),
+                    spreadRadius: 2,
+                    blurRadius: 5,
+                    offset: const Offset(0, 2),
+                  ),
+                ],
+              ),
+              child: Image.asset(
+                "${AppImageAssets.rootImageCategories}/${controller.categories[index]["categories_image"]}",
+                fit: BoxFit.contain,
+                width: 50,
+                height: 50, // Set consistent width and height for images
+              ),
             ),
           );
         },

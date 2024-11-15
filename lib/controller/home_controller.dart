@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:ecommerce_app_w/core/class/statusRequest.dart';
+import 'package:ecommerce_app_w/core/constant/approutes.dart';
 import 'package:ecommerce_app_w/core/constant/sharedprefkeys.dart';
 import 'package:ecommerce_app_w/core/function/handlingdatacontroller.dart';
 import 'package:ecommerce_app_w/data/datasource/remote/home_data.dart';
@@ -10,6 +11,8 @@ import 'package:get/get.dart';
 
 abstract class HomeController extends GetxController {
   initialData();
+  getData();
+  goToItems(List categories ,int selectedCategory );
 }
 
 class HomeControllerImplementation extends HomeController {
@@ -52,5 +55,14 @@ class HomeControllerImplementation extends HomeController {
   void onInit() {
     initialData();
     super.onInit();
+  }
+
+  @override
+  goToItems(List categories ,selectedCategory ) {
+      Get.toNamed(AppRoutes.items , arguments: {
+        "categories": categories,
+        "items" : items,
+        "selectedCategory": selectedCategory,
+      });
   }
 }

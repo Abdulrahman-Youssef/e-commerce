@@ -1,4 +1,4 @@
-import 'package:ecommerce_app_w/view/screen/home.dart';
+import 'package:ecommerce_app_w/view/screen/home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -15,6 +15,21 @@ abstract class HomeScreenController extends GetxController {
 
 class HomeScreenControllerImp extends HomeScreenController {
   int currentPage = 0;
+  Map<String, List> pageName = {
+    "pageName": [
+      "home",
+      "profile",
+      "favorite",
+      "setting",
+    ],
+    "icons" : [
+      Icons.home,
+      Icons.person,
+      Icons.star,
+      Icons.settings,
+    ]
+  };
+
   List<Widget> page = [
     const HomePage(),
     const Column(
