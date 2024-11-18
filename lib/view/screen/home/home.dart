@@ -4,7 +4,7 @@ import 'package:ecommerce_app_w/core/class/handlingdataviewW.dart';
 import 'package:ecommerce_app_w/core/constant/color.dart';
 import 'package:ecommerce_app_w/core/constant/imageassets.dart';
 import 'package:ecommerce_app_w/services/services.dart';
-import 'package:ecommerce_app_w/view/widget/gloablewidgets/ScrollableCategoryGallery.dart';
+import 'package:ecommerce_app_w/view/widget/home/ScrollableCategoryGallery.dart';
 import 'package:ecommerce_app_w/view/widget/home/billboards.dart';
 import 'package:ecommerce_app_w/view/widget/home/custom_title.dart';
 import 'package:ecommerce_app_w/view/widget/gloablewidgets/customsearchappbar.dart';
