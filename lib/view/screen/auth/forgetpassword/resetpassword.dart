@@ -1,5 +1,5 @@
-import 'package:ecommerce_app_w/controller/auth/forgetpassword_controller.dart';
-import 'package:ecommerce_app_w/controller/auth/resetpassword_controller.dart';
+import 'package:ecommerce_app_w/controller/auth/forgetpassword/forgetpassword_controller.dart';
+import 'package:ecommerce_app_w/controller/auth/forgetpassword/resetpassword_controller.dart';
 import 'package:ecommerce_app_w/controller/auth/signup_controller.dart';
 import 'package:ecommerce_app_w/core/constant/color.dart';
 import 'package:ecommerce_app_w/core/function/validinput.dart';

@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 
-class Categories extends StatelessWidget {
+class CategoriesList extends StatelessWidget {
 
-  const Categories({super.key});
+  const CategoriesList({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -1,4 +1,4 @@
-import 'package:ecommerce_app_w/controller/auth/forgetpassword_controller.dart';
+import 'package:ecommerce_app_w/controller/auth/forgetpassword/forgetpassword_controller.dart';
 import 'package:ecommerce_app_w/core/constant/color.dart';
 import 'package:ecommerce_app_w/core/function/validinput.dart';
 import 'package:ecommerce_app_w/view/widget/login/Authtextfield.dart';
