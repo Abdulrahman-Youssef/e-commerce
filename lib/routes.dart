@@ -14,6 +14,7 @@ import 'package:ecommerce_app_w/view/screen/home/homescreen.dart';
 import 'package:ecommerce_app_w/view/screen/items.dart';
 import 'package:ecommerce_app_w/view/screen/language.dart';
 import 'package:ecommerce_app_w/view/screen/onboarding.dart';
+import 'package:ecommerce_app_w/view/screen/showitem.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:path/path.dart';
 import 'core/constant/approutes.dart';
@@ -26,10 +27,10 @@ List<GetPage<dynamic>>? routes = [
     page: () => const Language(),
     middlewares: [myMiddleware()],
   ),
-
+  //used to go to the page im working on
   // GetPage(
   //     name: "/",
-  //     page: () => const TestView()),
+  //     page: () => const ShowItem()),
   // auth routes
 
   GetPage(
@@ -82,6 +83,10 @@ List<GetPage<dynamic>>? routes = [
  GetPage(
     name: AppRoutes.items,
     page: () => const WdItems(),
+  ),
+  GetPage(
+    name: AppRoutes.showItems,
+    page: () => const ShowItem(),
   ),
 
 ];

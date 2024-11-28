@@ -1,8 +1,12 @@
 import 'package:ecommerce_app_w/core/class/statusRequest.dart';
+import 'package:ecommerce_app_w/core/constant/approutes.dart';
 import 'package:ecommerce_app_w/core/function/handlingdatacontroller.dart';
 import 'package:ecommerce_app_w/data/datasource/remote/items_data.dart';
+import 'package:ecommerce_app_w/data/model/itemsmodel.dart';
+import 'package:ecommerce_app_w/view/screen/showitem.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart';
 
 abstract class ItemsController extends GetxController {
   initialData();
@@ -10,7 +14,7 @@ abstract class ItemsController extends GetxController {
   changeSelectedCategory(int selectedCategory);
 
   getItems();
-
+  toShowItem(ItemsModel item);
   addToFavorite();
 
 }
@@ -80,6 +84,13 @@ class ItemsControllerImp extends ItemsController {
   void changeFavoriteIcon(){
     favoriteIcon = favoriteIcon == const Icon(Icons.favorite_border) ? const Icon(Icons.favorite) :  const Icon(Icons.favorite_border)  ;
     update();
+  }
+
+  @override
+  toShowItem(item) {
+    Get.toNamed(AppRoutes.showItems ,arguments:  {
+      "item" : item,
+    } );
   }
 
 
