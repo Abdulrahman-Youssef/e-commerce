@@ -9,6 +9,7 @@ class AppLink {
   static const String test = "$server/test.php";
   static const String home = "$server/home.php";
 
+
   // auth folder
   static const String authFolder = "$server/auth";
   static const String signup = "$authFolder/signup.php";
@@ -24,5 +25,10 @@ class AppLink {
   //itemsFolder
   static const String itemsFolder = "$server/items";
   static const String items= "$itemsFolder/items.php";
+
+  //favorite folder
+  static const String favoriteFolder = "$server/favorite";
+  static const String addRemove = "$favoriteFolder/addremove.php";
+
 
 }

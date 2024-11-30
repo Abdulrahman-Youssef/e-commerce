@@ -3,6 +3,8 @@ import 'package:ecommerce_app_w/core/constant/approutes.dart';
 import 'package:ecommerce_app_w/core/constant/color.dart';
 import 'package:ecommerce_app_w/core/constant/sharedprefkeys.dart';
 import 'package:ecommerce_app_w/data/datasource/remote/auth/login.dart';
+import 'package:ecommerce_app_w/data/model/usermodel.dart';
+import 'package:ecommerce_app_w/global/user.dart';
 import 'package:ecommerce_app_w/services/services.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -65,9 +67,8 @@ class LoginControllerImpl extends LoginController {
               AppSharedPrefKeys.userPhone, response["data"]["users_phone"]);
           myServices.sharedpref.setString(
               AppSharedPrefKeys.userEmail, response["data"]["users_email"]);
-          myServices.sharedpref.setString(
-              AppSharedPrefKeys.step, "2");
-
+          myServices.sharedpref.setString(AppSharedPrefKeys.step, "2");
+          // User.user = UserModel.fromJson(response);
           Get.offAllNamed(AppRoutes.home);
         } else {
           Future.delayed(

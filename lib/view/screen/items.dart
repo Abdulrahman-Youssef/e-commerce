@@ -21,41 +21,39 @@ class WdItems extends StatelessWidget {
       body: Container(
         padding: const EdgeInsets.all(15),
         child: GetBuilder<ItemsControllerImp>(builder: (controller) {
-          return Container(
-            child: ListView(
-              children: [
-                const CustomSearchAppBar(),
-                const SizedBox(
-                  height: 20,
-                ),
-                const CategoriesList(),
-                const SizedBox(
-                  height: 20,
-                ),
-                HandlingDataViewW(
-                  statusRequest: controller.statusRequest,
-                  widget: GridView.builder(
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisSpacing: 8,
-                        mainAxisSpacing: 8,
-                        crossAxisCount: 2,
-                        childAspectRatio: .9,
-                        // Adjusts the height to width ratio of each item
-                      ),
-                      shrinkWrap: true,
-                      itemCount: controller.items.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        return InkWell(
-                          onTap: (){controller.toShowItem(ItemsModel.fromJson(controller.items[index]));},
-                          child: CustomGridViewItems(
-                              itemsModel:
-                                  ItemsModel.fromJson(controller.items[index])),
-                        );
-                      }),
-                )
-              ],
-            ),
+          return ListView(
+            children: [
+              const CustomSearchAppBar(),
+              const SizedBox(
+                height: 20,
+              ),
+              const CategoriesList(),
+              const SizedBox(
+                height: 20,
+              ),
+              HandlingDataViewW(
+                statusRequest: controller.statusRequest,
+                widget: GridView.builder(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisSpacing: 8,
+                      mainAxisSpacing: 8,
+                      crossAxisCount: 2,
+                      childAspectRatio: .9,
+                      // Adjusts the height to width ratio of each item
+                    ),
+                    shrinkWrap: true,
+                    itemCount: controller.items.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return InkWell(
+                        onTap: (){controller.toShowItem(ItemsModel.fromJson(controller.items[index]));},
+                        child: CustomGridViewItems(
+                            itemsModel:
+                                ItemsModel.fromJson(controller.items[index])),
+                      );
+                    }),
+              )
+            ],
           );
         }),
       ),

@@ -61,9 +61,10 @@ class CustomGridViewItems extends StatelessWidget {
               GetBuilder<ItemsControllerImp>(builder: (controller) {
                 return IconButton(
                   onPressed: () {
-                    controller.addToFavorite();
+                    controller.addToFavorite(itemsModel.itemsId!);
+                    itemsModel.favorite = itemsModel.favorite == 1 ? 0 : 1 ;
                   },
-                  icon: controller.favoriteIcon,
+                  icon: itemsModel.favorite != null && itemsModel.favorite == 0  ? const Icon(Icons.favorite_outline) : const Icon(Icons.favorite) ,
                 );
               }),
             ],
