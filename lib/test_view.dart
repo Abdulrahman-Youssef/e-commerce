@@ -1,5 +1,5 @@
 import 'package:ecommerce_app_w/controller/test_controller.dart';
-import 'package:ecommerce_app_w/core/class/handlingdataview.dart';
+import 'package:ecommerce_app_w/core/class/handlingdataviewW.dart';
 import 'package:ecommerce_app_w/core/constant/color.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -16,7 +16,7 @@ class TestView extends StatelessWidget {
         title: const Text("Title"),
       ),
       body: GetBuilder<TestController>(builder: (controller) {
-        return HandlingDataView(
+        return HandlingDataViewW(
           statusRequest: controller.statusRequest,
           widget: ListView.builder(
             itemCount: controller.data.length,

@@ -13,7 +13,12 @@ class HandlingDataView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return statusRequest == StatusRequest.loading
-        ? Center(child: Lottie.asset(AppImageAssets.loading1, width: 250 , height: 250,  ))
+        ? Center(
+            child: Lottie.asset(
+            AppImageAssets.loading1,
+            width: 250,
+            height: 250,
+          ))
         : statusRequest == StatusRequest.offlineFailure
             ? Center(
                 child: Lottie.asset(AppImageAssets.offline1),
@@ -24,13 +29,16 @@ class HandlingDataView extends StatelessWidget {
                   )
                 : statusRequest == StatusRequest.failure
                     ? Center(
-                      child: Column(
-                        children: [
-                          Lottie.asset(AppImageAssets.noData1),
-                          const Text("no data" , style: TextStyle(fontSize: 35),),
-                        ],
-                      ),
-                    )
+                        child: Column(
+                          children: [
+                            Lottie.asset(AppImageAssets.noData1),
+                            const Text(
+                              "no data",
+                              style: TextStyle(fontSize: 35),
+                            ),
+                          ],
+                        ),
+                      )
                     : widget;
   }
 }

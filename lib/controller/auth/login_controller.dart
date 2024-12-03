@@ -1,7 +1,13 @@
 import 'package:ecommerce_app_w/core/class/statusRequest.dart';
 import 'package:ecommerce_app_w/core/constant/approutes.dart';
 import 'package:ecommerce_app_w/core/constant/color.dart';
+import 'package:ecommerce_app_w/core/constant/sharedprefkeys.dart';
 import 'package:ecommerce_app_w/data/datasource/remote/auth/login.dart';
+import 'package:ecommerce_app_w/data/model/usermodel.dart';
+import 'package:ecommerce_app_w/global/user.dart';
+import 'package:ecommerce_app_w/services/services.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
@@ -18,6 +24,7 @@ abstract class LoginController extends GetxController {
 }
 
 class LoginControllerImpl extends LoginController {
+  MyServices myServices = Get.find();
   LoginData loginData = LoginData(Get.find());
 
   GlobalKey<FormState> fromState = GlobalKey<FormState>();
@@ -28,7 +35,7 @@ class LoginControllerImpl extends LoginController {
   bool isShowPassword = true;
   Color iconColor = AppColor.grey;
 
-  late StatusRequest? statusRequest;
+  late StatusRequest statusRequest = StatusRequest.notAssigned;
 
   @override
   showPassword() {
@@ -42,20 +49,46 @@ class LoginControllerImpl extends LoginController {
   login() async {
     if (fromState.currentState!.validate()) {
       statusRequest = StatusRequest.loading;
+      update();
       var response = await loginData.postData(email.text, password.text);
       statusRequest = handlingData(response);
+      update();
       if (statusRequest == StatusRequest.success) {
         print("statusRequest in login controller : ${statusRequest}");
         if (response["status"] == "success") {
-          Get.defaultDialog(
-              title: "correct", middleText: "correct email and password");
+          // Get.defaultDialog(
+          //     title: "correct", middleText: "correct email and password");
+
+          myServices.sharedpref.setString(
+              AppSharedPrefKeys.userName, response["data"]["users_name"]);
+          myServices.sharedpref
+              .setInt(AppSharedPrefKeys.userID, response["data"]["users_id"]);
+          myServices.sharedpref.setString(
+              AppSharedPrefKeys.userPhone, response["data"]["users_phone"]);
+          myServices.sharedpref.setString(
+              AppSharedPrefKeys.userEmail, response["data"]["users_email"]);
+          myServices.sharedpref.setString(AppSharedPrefKeys.step, "2");
+          // User.user = UserModel.fromJson(response);
           Get.offAllNamed(AppRoutes.home);
         } else {
-          Get.defaultDialog(
-              title: "Wrong", middleText: "Wrong email and password");
+          Future.delayed(
+            const Duration(microseconds: 500),
+            () {
+              statusRequest = StatusRequest.notAssigned;
+              update();
+            },
+          );
+          // "Wrong email and password"
         }
-      }else{
-        Get.defaultDialog(title: "error" , middleText: "${statusRequest}");
+      } else {
+        Future.delayed(
+          const Duration(seconds: 2),
+          () {
+            statusRequest = StatusRequest.notAssigned;
+            update();
+            // "Wrong email and password"
+          },
+        );
       }
     } else {
       print("Not Valid");
@@ -74,6 +107,10 @@ class LoginControllerImpl extends LoginController {
 
   @override
   void onInit() {
+    FirebaseMessaging.instance.getToken().then((value) {
+      print("the token is : ${value}");
+      String? token = value;
+    });
     email = TextEditingController();
     password = TextEditingController();
     super.onInit();

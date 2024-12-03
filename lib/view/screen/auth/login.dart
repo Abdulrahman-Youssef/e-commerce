@@ -1,4 +1,5 @@
 import 'package:ecommerce_app_w/controller/auth/login_controller.dart';
+import 'package:ecommerce_app_w/core/class/handlingdataviewW.dart';
 import 'package:ecommerce_app_w/core/constant/approutes.dart';
 import 'package:ecommerce_app_w/core/constant/color.dart';
 import 'package:ecommerce_app_w/core/function/alertexitapp.dart';
@@ -17,7 +18,7 @@ class Login extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    LoginControllerImpl controller = Get.put(LoginControllerImpl());
+    Get.put(LoginControllerImpl());
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -42,82 +43,88 @@ class Login extends StatelessWidget {
             return;
           }
         },
-        child: Container(
-          color: AppColor.backgroundcolor,
-          padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
-          child: Center(
-            child: Form(
-              key: controller.fromState,
-              child: ListView(
-                children: [
-                  const LogoAuth(),
-                  const TextTitle(
-                    title: "Welcome back",
-                  ),
-                  const SizedBox(height: 10),
-                  const TextBody(
-                    bodyText:
-                        "Login with your email and password or with your social media",
-                  ),
-                  const SizedBox(
-                    height: 40,
-                  ),
-                  AuthTextField(
-                    validator: (val) {
-                      return validInput(val!, 5, 100, "Email");
-                    },
-                    mycontroller: controller.email,
-                    hinttext: "Enter your email",
-                    iconData: Icons.mail_outline,
-                    labeltext: "Email",
-                    isNumber: false,
-                  ),
-                  const SizedBox(height: 35),
-                  GetBuilder<LoginControllerImpl>(
-                      //password
-                      builder: (controller) => AuthTextField(
-                          iconColor: controller.iconColor,
-                            isObscure: controller.isShowPassword,
-                            onTapIcon: controller.showPassword,
-                            validator: (val) {
-                              return validInput(val!, 8, 30, "Password");
+        child: GetBuilder<LoginControllerImpl>(builder: (controller) {
+          return HandlingDataViewW(
+              statusRequest: controller.statusRequest,
+              widget: Container(
+                color: AppColor.backgroundcolor,
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                child: Center(
+                  child: Form(
+                    key: controller.fromState,
+                    child: ListView(
+                      children: [
+                        const LogoAuth(),
+                        const TextTitle(
+                          title: "Welcome back",
+                        ),
+                        const SizedBox(height: 10),
+                        const TextBody(
+                          bodyText:
+                              "Login with your email and password or with your social media",
+                        ),
+                        const SizedBox(
+                          height: 40,
+                        ),
+                        AuthTextField(
+                          validator: (val) {
+                            return validInput(val!, 5, 100, "Email");
+                          },
+                          mycontroller: controller.email,
+                          hinttext: "Enter your email",
+                          iconData: Icons.mail_outline,
+                          labeltext: "Email",
+                          isNumber: false,
+                        ),
+                        const SizedBox(height: 35),
+                        GetBuilder<LoginControllerImpl>(
+                            //password
+                            builder: (controller) => AuthTextField(
+                                  iconColor: controller.iconColor,
+                                  isObscure: controller.isShowPassword,
+                                  onTapIcon: controller.showPassword,
+                                  validator: (val) {
+                                    return validInput(val!, 8, 30, "Password");
+                                  },
+                                  mycontroller: controller.password,
+                                  hinttext: "Enter your password",
+                                  iconData: Icons.lock_outline,
+                                  labeltext: "Password",
+                                  isNumber: false,
+                                )),
+                        Container(
+                          alignment: Alignment.centerRight,
+                          child: TextButton(
+                            onPressed: () {
+                              controller.toForgetPassword();
                             },
-                            mycontroller: controller.password,
-                            hinttext: "Enter your password",
-                            iconData: Icons.lock_outline,
-                            labeltext: "Password",
-                            isNumber: false,
-                          )),
-                  Container(
-                    alignment: Alignment.centerRight,
-                    child: TextButton(
-                      onPressed: () {
-                        controller.toForgetPassword();
-                      },
-                      child: const Text(
-                        "Forget the password",
-                        textAlign: TextAlign.end,
-                      ),
+                            child: const Text(
+                              "Forget the password",
+                              textAlign: TextAlign.end,
+                            ),
+                          ),
+                        ),
+                        CustomAuthButton(
+                          text: "Login",
+                          onPressed: () {
+                            controller.login();
+
+                          },
+                        ),
+                        CustomAuthText(
+                          text1: "Don't have account ? ",
+                          text2: "Sign Up",
+                          onTap: () {
+                            controller.toSignUp();
+                          },
+                        )
+                      ],
                     ),
                   ),
-                  CustomAuthButton(
-                    text: "Login",
-                    onPressed: () {
-                      controller.login();
-                    },
-                  ),
-                  CustomAuthText(
-                    text1: "Don't have account ? ",
-                    text2: "Sign Up",
-                    onTap: () {
-                      controller.toSignUp();
-                    },
-                  )
-                ],
-              ),
-            ),
-          ),
-        ),
+                ),
+              ));
+        }),
       ),
     );
   }

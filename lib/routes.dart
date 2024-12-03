@@ -9,9 +9,13 @@ import 'package:ecommerce_app_w/view/screen/auth/forgetpassword/resetpassword.da
 import 'package:ecommerce_app_w/view/screen/auth/signup.dart';
 import 'package:ecommerce_app_w/view/screen/auth/success_singup.dart';
 import 'package:ecommerce_app_w/view/screen/auth/forgetpassword/verfiycode.dart';
-import 'package:ecommerce_app_w/view/screen/home.dart';
+import 'package:ecommerce_app_w/view/screen/favoritescreen.dart';
+import 'package:ecommerce_app_w/view/screen/home/home.dart';
+import 'package:ecommerce_app_w/view/screen/home/homescreen.dart';
+import 'package:ecommerce_app_w/view/screen/items.dart';
 import 'package:ecommerce_app_w/view/screen/language.dart';
 import 'package:ecommerce_app_w/view/screen/onboarding.dart';
+import 'package:ecommerce_app_w/view/screen/showitem.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:path/path.dart';
 import 'core/constant/approutes.dart';
@@ -24,10 +28,12 @@ List<GetPage<dynamic>>? routes = [
     page: () => const Language(),
     middlewares: [myMiddleware()],
   ),
+  //used to go to the page im working on
   // GetPage(
   //     name: "/",
-  //     page: () => const TestView()),
+  //     page: () => const ShowItem()),
   // auth routes
+
   GetPage(
     name: AppRoutes.login,
     page: () => const Login(),
@@ -70,6 +76,21 @@ List<GetPage<dynamic>>? routes = [
   GetPage(
     name: AppRoutes.home,
     page: () => const HomePage(),
-  )
-
+  ),
+  GetPage(
+    name: AppRoutes.homeScreen,
+    page: () => const HomeScreen(),
+  ),
+ GetPage(
+    name: AppRoutes.items,
+    page: () => const WdItems(),
+  ),
+  GetPage(
+    name: AppRoutes.showItems,
+    page: () => const ShowItem(),
+  ),
+  GetPage(
+    name: AppRoutes.favoriteScreen,
+    page: () =>  FavoriteScreen(),
+  ),
 ];

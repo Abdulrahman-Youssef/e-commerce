@@ -1,6 +1,8 @@
 class AppImageAssets {
   //roots
   static const String rootImage = "assets/images";
+  static const String rootImageCategories ="assets/images/categories";
+  static const String rootImageItems ="assets/images/items";
   static const String rootlottie= "assets/lottie";
   //onboarding
   static const String logo  = "$rootImage/logo.png";
@@ -14,5 +16,14 @@ class AppImageAssets {
   static const String noData2  = "$rootlottie/nodata2.json";
   static const String loading1 = "$rootlottie/loading1.json";
   static const String serverError2 = "$rootlottie/server_error_2.json";
+  //categories
+  static const String camera = "$rootImageCategories/cameraCategory1.png";
+  static const String dresses = "$rootImageCategories/dress category1.png";
+  static const String laptop = "$rootImageCategories/Laptop category1.png";
+  static const String phones = "$rootImageCategories/phone category1.png";
+  static const String shoes = "$rootImageCategories/shoes category.png";
+  // items
+
+
 }
 

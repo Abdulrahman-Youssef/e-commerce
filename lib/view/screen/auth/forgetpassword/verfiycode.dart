@@ -1,5 +1,5 @@
-import 'package:ecommerce_app_w/controller/auth/forgetpassword_controller.dart';
-import 'package:ecommerce_app_w/controller/auth/verifycode_controller.dart';
+import 'package:ecommerce_app_w/controller/auth/forgetpassword/forgetpassword_controller.dart';
+import 'package:ecommerce_app_w/controller/auth/forgetpassword/verifycode_controller.dart';
 import 'package:ecommerce_app_w/core/constant/color.dart';
 import 'package:ecommerce_app_w/view/widget/login/Authtextfield.dart';
 import 'package:ecommerce_app_w/view/widget/login/customeauthbutton.dart';
@@ -14,8 +14,7 @@ class VerfiyCode extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    VerifyCodeControllerImpl controller =
-        Get.put(VerifyCodeControllerImpl());
+    VerifyCodeControllerImpl controller = Get.put(VerifyCodeControllerImpl());
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -52,8 +51,12 @@ class VerfiyCode extends StatelessWidget {
                 borderColor: const Color(0xFF512DA8),
                 showFieldAsBox: true,
                 onCodeChanged: (String code) {},
-                onSubmit: (String verificationCode) {
-                  controller.toResetPassword();
+                onSubmit: (String verificationCode) async {
+                  controller.verifyCode = verificationCode;
+                  bool result = await controller.checkCode();
+                  if (result) {
+                    controller.toResetPassword();
+                  }
                 }, // end onSubmit
               ),
             ],
