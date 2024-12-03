@@ -1,3 +1,4 @@
+import 'package:ecommerce_app_w/view/screen/favoritescreen.dart';
 import 'package:ecommerce_app_w/view/screen/home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -36,10 +37,7 @@ class HomeScreenControllerImp extends HomeScreenController {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [Center(child: Text('profile'))],
     ),
-    const Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [Center(child: Text('favorite'))],
-    ),
+    FavoriteScreen(),
     const Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [Center(child: Text('setting'))],

@@ -9,6 +9,7 @@ import 'package:ecommerce_app_w/view/screen/auth/forgetpassword/resetpassword.da
 import 'package:ecommerce_app_w/view/screen/auth/signup.dart';
 import 'package:ecommerce_app_w/view/screen/auth/success_singup.dart';
 import 'package:ecommerce_app_w/view/screen/auth/forgetpassword/verfiycode.dart';
+import 'package:ecommerce_app_w/view/screen/favoritescreen.dart';
 import 'package:ecommerce_app_w/view/screen/home/home.dart';
 import 'package:ecommerce_app_w/view/screen/home/homescreen.dart';
 import 'package:ecommerce_app_w/view/screen/items.dart';
@@ -88,5 +89,8 @@ List<GetPage<dynamic>>? routes = [
     name: AppRoutes.showItems,
     page: () => const ShowItem(),
   ),
-
+  GetPage(
+    name: AppRoutes.favoriteScreen,
+    page: () =>  FavoriteScreen(),
+  ),
 ];

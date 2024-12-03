@@ -11,6 +11,14 @@ class FavoriteData {
       "userid": userid,
       "itemid": itemid,
     });
-    return response;
+    return response.fold((l) => l, (r) => r);
+  }
+
+  getData(String userid) async {
+    var response = await crud.postData(AppLink.gettable,
+        {
+      "userid": userid,
+    });
+    return response.fold((l) => l, (r) => r);
   }
 }

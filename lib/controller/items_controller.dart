@@ -84,7 +84,7 @@ class ItemsControllerImp extends ItemsController {
   }
 
   @override
-  void addToFavorite(itemID) async
+  void addToFavorite(int itemID) async
   {
      await favoriteData.addRemove(userID.toString(), itemID.toString());
     for (var item in items) {
@@ -93,7 +93,6 @@ class ItemsControllerImp extends ItemsController {
         break;
       }
     }
-
     update();
   }
 

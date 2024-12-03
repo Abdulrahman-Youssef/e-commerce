@@ -29,6 +29,7 @@ class AppLink {
   //favorite folder
   static const String favoriteFolder = "$server/favorite";
   static const String addRemove = "$favoriteFolder/addremove.php";
+  static const String gettable = "$favoriteFolder/gettable.php";
 
 
 }
