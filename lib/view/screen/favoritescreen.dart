@@ -11,6 +11,7 @@ class FavoriteScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    controller.getData();
     return Scaffold(
       appBar: AppBar(
         title: const Text("Favorite Items"),
@@ -25,7 +26,6 @@ class FavoriteScreen extends StatelessWidget {
             ),
           );
         }
-
         return ListView.builder(
           padding: const EdgeInsets.all(8.0),
           itemCount: controller.favorites.length,

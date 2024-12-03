@@ -28,11 +28,13 @@ class FavoriteControllerImp extends FavoriteController {
 
   @override
   initData() {
+
     getData();
   }
 
   @override
   getData() async {
+    favorites.clear();
     statusRequest = StatusRequest.loading;
     var response = await favoriteData.getData(
         services.sharedpref.getInt(AppSharedPrefKeys.userID).toString());
