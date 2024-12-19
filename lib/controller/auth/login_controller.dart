@@ -1,3 +1,4 @@
+import 'package:dartz/dartz.dart';
 import 'package:ecommerce_app_w/core/class/statusRequest.dart';
 import 'package:ecommerce_app_w/core/constant/approutes.dart';
 import 'package:ecommerce_app_w/core/constant/color.dart';
@@ -21,6 +22,8 @@ abstract class LoginController extends GetxController {
   toForgetPassword();
 
   showPassword();
+
+  toVerifyCodeSignUp();
 }
 
 class LoginControllerImpl extends LoginController {
@@ -29,6 +32,9 @@ class LoginControllerImpl extends LoginController {
 
   GlobalKey<FormState> fromState = GlobalKey<FormState>();
 
+  late int id ;
+  late String username;
+  late String phone;
   late TextEditingController email;
 
   late TextEditingController password;
@@ -56,20 +62,26 @@ class LoginControllerImpl extends LoginController {
       if (statusRequest == StatusRequest.success) {
         print("statusRequest in login controller : ${statusRequest}");
         if (response["status"] == "success") {
-          // Get.defaultDialog(
-          //     title: "correct", middleText: "correct email and password");
+          if (response["data"]["users_approve"] == 1) {
+            myServices.sharedpref.setString(
+                AppSharedPrefKeys.userName, response["data"]["users_name"]);
+            myServices.sharedpref
+                .setInt(AppSharedPrefKeys.userID, response["data"]["users_id"]);
+            myServices.sharedpref.setString(
+                AppSharedPrefKeys.userPhone, response["data"]["users_phone"]);
+            myServices.sharedpref.setString(
+                AppSharedPrefKeys.userEmail, response["data"]["users_email"]);
+            myServices.sharedpref.setString(AppSharedPrefKeys.step, "2");
+            Get.offAllNamed(AppRoutes.home);
+          } else {
+            id = response["data"]["users_id"] ;
+            username = response["data"]["users_name"] ;
+            phone = response["data"]["users_phone"] ;
+            toVerifyCodeSignUp();
 
-          myServices.sharedpref.setString(
-              AppSharedPrefKeys.userName, response["data"]["users_name"]);
-          myServices.sharedpref
-              .setInt(AppSharedPrefKeys.userID, response["data"]["users_id"]);
-          myServices.sharedpref.setString(
-              AppSharedPrefKeys.userPhone, response["data"]["users_phone"]);
-          myServices.sharedpref.setString(
-              AppSharedPrefKeys.userEmail, response["data"]["users_email"]);
-          myServices.sharedpref.setString(AppSharedPrefKeys.step, "2");
+          }
+
           // User.user = UserModel.fromJson(response);
-          Get.offAllNamed(AppRoutes.home);
         } else {
           Future.delayed(
             const Duration(microseconds: 500),
@@ -121,5 +133,15 @@ class LoginControllerImpl extends LoginController {
     email.dispose();
     password.dispose();
     super.dispose();
+  }
+
+  @override
+  toVerifyCodeSignUp() {
+    Get.offAllNamed(AppRoutes.verifyCodeSignUp, arguments: {
+      "id": id,
+      "email": email.text,
+      "phone": phone,
+      "username": username,
+    });
   }
 }

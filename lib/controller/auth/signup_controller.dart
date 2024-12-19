@@ -24,28 +24,27 @@ class SignUpControllerImpl extends SignUpController {
   SignupData signupData = SignupData(Get.find());
 
   @override
-  signup() async{
+  signup() async {
     if (fromState.currentState!.validate()) {
       statusRequest = StatusRequest.loading;
       update();
-      var response = await signupData.postData(name.text, password.text, email.text, phone.text);
+      var response = await signupData.postData(
+          name.text, password.text, email.text, phone.text);
       print("response $response");
       statusRequest = handlingData(response);
       if (StatusRequest.success == statusRequest) {
         if (response["status"] == "success") {
           // data.addAll(response["data"]);
-          Get.offNamed(AppRoutes.verifyCodeSignUp , arguments: {
-            "email" : email.text
-          } );
-
+          Get.offNamed(AppRoutes.verifyCodeSignUp,
+              arguments: {"email": email.text});
         } else {
-          Get.defaultDialog(title: "Waring" ,middleText: "phone or email is already exist");
+          Get.defaultDialog(
+              title: "Waring", middleText: "phone or email is already exist");
           statusRequest = StatusRequest.failure;
           update();
         }
       }
       update();
-
 
       // Get.toNamed(AppRoutes.verifyCodeSignUp);
       // Get.delete<SignUpControllerImpl>();

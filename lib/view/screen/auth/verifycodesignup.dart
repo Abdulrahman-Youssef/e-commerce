@@ -57,11 +57,20 @@ class VerfiyCodeSignUp extends StatelessWidget {
                           showFieldAsBox: true,
                           onCodeChanged: (String code) {},
                           onSubmit: (String verificationCode) {
-                           controller.verifyCode = verificationCode;
+                            controller.verifyCode = verificationCode;
                             controller.toSuccessSignUp();
-
                           }, // end onSubmit
                         ),
+                        Row(
+                          children: [
+                            TextButton(
+                                onPressed: controller.reSendCode,
+                                child: const Text(
+                                  "Resend code",
+                                  style: TextStyle(color: Colors.blueAccent, fontSize: 14 ,decoration: TextDecoration.underline,  ),
+                                )),
+                          ],
+                        )
                       ],
                     ),
                   ),
