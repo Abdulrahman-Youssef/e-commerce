@@ -32,7 +32,8 @@ class LoginControllerImpl extends LoginController {
 
   GlobalKey<FormState> fromState = GlobalKey<FormState>();
 
-  late int id ;
+  late int id;
+
   late String username;
   late String phone;
   late TextEditingController email;
@@ -74,11 +75,10 @@ class LoginControllerImpl extends LoginController {
             myServices.sharedpref.setString(AppSharedPrefKeys.step, "2");
             Get.offAllNamed(AppRoutes.home);
           } else {
-            id = response["data"]["users_id"] ;
-            username = response["data"]["users_name"] ;
-            phone = response["data"]["users_phone"] ;
+            id = response["data"]["users_id"];
+            username = response["data"]["users_name"];
+            phone = response["data"]["users_phone"];
             toVerifyCodeSignUp();
-
           }
 
           // User.user = UserModel.fromJson(response);

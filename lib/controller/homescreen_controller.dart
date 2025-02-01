@@ -1,5 +1,6 @@
 import 'package:ecommerce_app_w/view/screen/favoritescreen.dart';
 import 'package:ecommerce_app_w/view/screen/home/home.dart';
+import 'package:ecommerce_app_w/view/screen/setting_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -26,7 +27,7 @@ class HomeScreenControllerImp extends HomeScreenController {
     "icons" : [
       Icons.home,
       Icons.person,
-      Icons.star,
+      Icons.favorite,
       Icons.settings,
     ]
   };
@@ -38,10 +39,7 @@ class HomeScreenControllerImp extends HomeScreenController {
       children: [Center(child: Text('profile'))],
     ),
     FavoriteScreen(),
-    const Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [Center(child: Text('setting'))],
-    ),
+    const SettingScreen(),
   ];
 
   @override

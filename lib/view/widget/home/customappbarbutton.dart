@@ -10,7 +10,7 @@ class CustomAppbarButton extends StatelessWidget {
 
    CustomAppbarButton(
       {super.key,
-      this.onPressed,
+      this.onPressed, 
       required this.text,
       required this.icon,
       required this.selected});

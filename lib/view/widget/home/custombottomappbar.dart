@@ -17,32 +17,15 @@ class CustomBottomAppbar extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   ...List.generate(controller.page.length, (index) {
-                    return index == 2
-                        ? Row(
-                            children: [
-                              const SizedBox(
-                                width: 25,
-                              ),
-                              CustomAppbarButton(
-                                text: "favorite",
-                                icon: CupertinoIcons.heart,
-                                selected: controller.currentPage == index,
-                                onPressed: () {
-                                  controller.changePage(index);
-                                },
-                              ),
-                            ],
-                          )
-                        : CustomAppbarButton(
-                            text: controller.pageName["pageName"]?[index],
-                            icon: controller.pageName["icons"]?[index],
-                            // icon: Icons.home,
-                            selected:
-                                controller.currentPage == index ? true : false,
-                            onPressed: () {
-                              controller.changePage(index);
-                            },
-                          );
+                    return CustomAppbarButton(
+                      text: controller.pageName["pageName"]?[index],
+                      icon: controller.pageName["icons"]?[index],
+                      // icon: Icons.home,
+                      selected: controller.currentPage == index ? true : false,
+                      onPressed: () {
+                        controller.changePage(index);
+                      },
+                    );
                   })
                 ],
               ),
