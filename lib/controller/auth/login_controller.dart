@@ -73,7 +73,7 @@ class LoginControllerImpl extends LoginController {
             myServices.sharedpref.setString(
                 AppSharedPrefKeys.userEmail, response["data"]["users_email"]);
             myServices.sharedpref.setString(AppSharedPrefKeys.step, "2");
-            Get.offAllNamed(AppRoutes.home);
+            Get.offAllNamed(AppRoutes.homeScreen);
           } else {
             id = response["data"]["users_id"];
             username = response["data"]["users_name"];

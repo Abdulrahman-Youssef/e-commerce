@@ -1,4 +1,5 @@
 import 'package:ecommerce_app_w/controller/favorite_controller.dart';
+import 'package:ecommerce_app_w/core/constant/color.dart';
 import 'package:ecommerce_app_w/core/constant/imageassets.dart';
 import 'package:ecommerce_app_w/data/model/itemsmodel.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +17,7 @@ class FavoriteScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Favorite Items"),
         centerTitle: true,
+        backgroundColor: AppColor.primaryColor,
       ),
       body: Obx(() {
         if (controller.favorites.isEmpty) {

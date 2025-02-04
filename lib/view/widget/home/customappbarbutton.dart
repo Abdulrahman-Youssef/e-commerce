@@ -17,23 +17,26 @@ class CustomAppbarButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialButton(
-      onPressed: onPressed,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(
-            color: selected == true ? AppColor.primaryColor : AppColor.black,
-            icon,
-            size: 25,
-          ),
-          Text(
-            text,
-            style: TextStyle(
+    return Expanded(
+      child: MaterialButton(
+        onPressed: onPressed,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(
               color: selected == true ? AppColor.primaryColor : AppColor.black,
+              icon,
+              size: 25,
             ),
-          )
-        ],
+            Text(
+              text,
+              style: TextStyle(
+                fontSize: 8,
+                color: selected == true ? AppColor.primaryColor : AppColor.black,
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

@@ -3,7 +3,7 @@ class AppLink {
   // static const String server = "http://localehost/ecommerce_w";
   static const String serverEmulator = "http://10.0.2.2/ecommerce_w";
   static const String serverPhysicalDevice = "http://192.168.1.2/ecommerce_w";
-  static const String server = serverEmulator;
+  static const String server = serverPhysicalDevice;
 
   //pages
   static const String test = "$server/test.php";

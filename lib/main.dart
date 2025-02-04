@@ -1,5 +1,7 @@
 import 'package:ecommerce_app_w/binding/initialbinding.dart';
 import 'package:ecommerce_app_w/core/constant/texttheme.dart';
+import 'package:ecommerce_app_w/core/function/put_server.dart';
+import 'package:ecommerce_app_w/linkapi.dart';
 import 'package:ecommerce_app_w/localization/changelocale.dart';
 import 'package:ecommerce_app_w/localization/translation.dart';
 import 'package:ecommerce_app_w/services/services.dart';
@@ -19,7 +21,6 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -31,8 +32,6 @@ class MyApp extends StatelessWidget {
       locale: controller.language,
       theme: controller.appTheme,
       initialBinding: InitialBinding(),
-
-
       // home: const Test(),
       getPages: routes ,//getx route
     );

@@ -40,7 +40,7 @@ dependencies:
 
   cached_network_image: ^3.2.0
   image_picker: ^1.1.2
-
+  device_info_plus: ^9.0.2
   show_up_animation: ^2.0.0
   auto_animated: ^3.0.1
 

@@ -71,7 +71,7 @@ class Login extends StatelessWidget {
                           validator: (val) {
                             return validInput(val!, 5, 100, "Email");
                           },
-                          mycontroller: controller.email,
+                          mycontroller: controller.email..text = "abdo@gamil.com",
                           hinttext: "Enter your email",
                           iconData: Icons.mail_outline,
                           labeltext: "Email",
@@ -87,7 +87,7 @@ class Login extends StatelessWidget {
                                   validator: (val) {
                                     return validInput(val!, 8, 30, "Password");
                                   },
-                                  mycontroller: controller.password,
+                                  mycontroller: controller.password..text = "12345678",
                                   hinttext: "Enter your password",
                                   iconData: Icons.lock_outline,
                                   labeltext: "Password",
@@ -109,7 +109,6 @@ class Login extends StatelessWidget {
                           text: "Login",
                           onPressed: () {
                             controller.login();
-
                           },
                         ),
                         CustomAuthText(

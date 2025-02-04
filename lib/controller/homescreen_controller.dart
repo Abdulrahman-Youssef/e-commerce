@@ -1,5 +1,6 @@
 import 'package:ecommerce_app_w/view/screen/favoritescreen.dart';
 import 'package:ecommerce_app_w/view/screen/home/home.dart';
+import 'package:ecommerce_app_w/view/screen/profile.dart';
 import 'package:ecommerce_app_w/view/screen/setting_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -20,26 +21,23 @@ class HomeScreenControllerImp extends HomeScreenController {
   Map<String, List> pageName = {
     "pageName": [
       "home",
-      "profile",
       "favorite",
+      "profile",
       "setting",
     ],
     "icons" : [
       Icons.home,
-      Icons.person,
       Icons.favorite,
+      Icons.person,
       Icons.settings,
     ]
   };
 
   List<Widget> page = [
     const HomePage(),
-    const Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [Center(child: Text('profile'))],
-    ),
     FavoriteScreen(),
-    const SettingScreen(),
+    const ProfileScreen(),
+     SettingScreen(),
   ];
 
   @override

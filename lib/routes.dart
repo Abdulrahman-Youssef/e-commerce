@@ -15,6 +15,7 @@ import 'package:ecommerce_app_w/view/screen/home/homescreen.dart';
 import 'package:ecommerce_app_w/view/screen/items.dart';
 import 'package:ecommerce_app_w/view/screen/language.dart';
 import 'package:ecommerce_app_w/view/screen/onboarding.dart';
+import 'package:ecommerce_app_w/view/screen/setting_screen.dart';
 import 'package:ecommerce_app_w/view/screen/showitem.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:path/path.dart';
@@ -92,5 +93,9 @@ List<GetPage<dynamic>>? routes = [
   GetPage(
     name: AppRoutes.favoriteScreen,
     page: () =>  FavoriteScreen(),
+  ),
+  GetPage(
+    name: AppRoutes.settingScreen,
+    page: () =>   SettingScreen(),
   ),
 ];

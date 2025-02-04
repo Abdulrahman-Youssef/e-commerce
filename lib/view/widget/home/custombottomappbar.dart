@@ -13,8 +13,9 @@ class CustomBottomAppbar extends StatelessWidget {
         builder: (controller) => BottomAppBar(
               shape: const CircularNotchedRectangle(),
               notchMargin: 5,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              child:
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   ...List.generate(controller.page.length, (index) {
                     return CustomAppbarButton(

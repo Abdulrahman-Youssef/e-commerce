@@ -1,5 +1,6 @@
 import 'package:ecommerce_app_w/core/constant/apptheme.dart';
 import 'package:ecommerce_app_w/core/constant/color.dart';
+import 'package:ecommerce_app_w/core/constant/sharedprefkeys.dart';
 import 'package:ecommerce_app_w/services/services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -13,7 +14,7 @@ class LocaleController extends GetxController {
   ThemeData appTheme = themeEnglish;
   changeLang(String langCode) {
     Locale locale = Locale(langCode);
-    myServices.sharedpref.setString("lang", langCode);
+    myServices.sharedpref.setString(AppSharedPrefKeys.lang, langCode);
     appTheme = langCode == "ar" ? themeArabic : themeEnglish;
     Get.changeTheme(appTheme);
     Get.updateLocale(locale);
