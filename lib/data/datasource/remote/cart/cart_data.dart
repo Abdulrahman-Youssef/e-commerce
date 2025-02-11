@@ -14,20 +14,23 @@ class CartData {
     return response.fold((l) => l, (r) => r); //?
   }
 
-  putItem(String userid , String itemid ) async {
+  putItem(String userid , String itemid  , {String itemCount = "1"}) async {
     var response = await crud.postData(AppLink.cartPutItem,
         {
           "userid" :userid,
           "itemid" :itemid,
+          "itemCount":itemCount,
         });
     return response.fold((l) => l, (r) => r); //?
   }
 
-  removeItem(String userid , String cartID) async {
+  removeItem(String userid , String cartID , String itemCount ) async {
+
     var response = await crud.postData(AppLink.cartRemoveItem,
         {
           "userid" : userid,
           "cartID" : cartID,
+          "itemCount": itemCount,
         });
     return response.fold((l) => l, (r) => r); //?
   }

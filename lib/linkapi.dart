@@ -34,8 +34,8 @@ class AppLink {
 
   // cart folder
   static const String cartFolder = "$server/cart";
-  static const String cartPutItem = "$server/putItem.php";
-  static const String cartRemoveItem = "$server/removeItem.php";
-  static const String cartGetItems = "$server/getItems.php";
+  static const String cartPutItem = "$cartFolder/putItem.php";
+  static const String cartRemoveItem = "$cartFolder/removeItem.php";
+  static const String cartGetItems = "$cartFolder/getItems.php";
 
 }

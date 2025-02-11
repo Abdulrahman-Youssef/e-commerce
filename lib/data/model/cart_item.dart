@@ -1,7 +1,8 @@
-class CartItem {
+class CartItemModel {
   int? cartID;
   int? cartUserId;
   int? cartItemId;
+  int? itemCount;
   int? itemsId;
   String? itemsName;
   String? itemsDescription;
@@ -13,10 +14,11 @@ class CartItem {
   String? itemsDate;
   int? itemsCategory;
 
-  CartItem(
+  CartItemModel(
       {this.cartID,
         this.cartUserId,
         this.cartItemId,
+        this.itemCount,
         this.itemsId,
         this.itemsName,
         this.itemsDescription,
@@ -28,10 +30,11 @@ class CartItem {
         this.itemsDate,
         this.itemsCategory});
 
-  CartItem.fromJson(Map<String, dynamic> json) {
+  CartItemModel.fromJson(Map<String, dynamic> json) {
     cartID = json['cart_ID'];
     cartUserId = json['cart_user_id'];
     cartItemId = json['cart_item_id'];
+    itemCount = json['item_count'];
     itemsId = json['items_id'];
     itemsName = json['items_name'];
     itemsDescription = json['items_description'];
@@ -49,6 +52,7 @@ class CartItem {
     data['cart_ID'] = this.cartID;
     data['cart_user_id'] = this.cartUserId;
     data['cart_item_id'] = this.cartItemId;
+    data['item_count'] = this.itemCount;
     data['items_id'] = this.itemsId;
     data['items_name'] = this.itemsName;
     data['items_description'] = this.itemsDescription;

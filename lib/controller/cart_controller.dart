@@ -10,13 +10,15 @@ import '../core/function/handlingdatacontroller.dart';
 
 abstract class CartController extends GetxController {
   initialData();
-  removeItem(int cartID);
-  putItem(int itemID);
+
+  removeItem(int cartID, int itemCount);
+
+  putItem(int itemID, int itemCount);
 }
 
 class CartControllerImpl extends CartController {
-  List cartItemsList = [].obs;
-  List<CartItem> cartItem = <CartItem>[].obs;
+  List cartItems = [].obs;
+  List<CartItemModel> cartItem = <CartItemModel>[].obs;
 
   CartData cartData = CartData(Get.find());
   MyServices myServices = Get.find();
@@ -35,7 +37,7 @@ class CartControllerImpl extends CartController {
     statusRequest = handlingData(response);
     if (StatusRequest.success == statusRequest) {
       if (response["status"] == "success") {
-        cartItemsList = response["data"];
+        cartItems = response["data"];
       } else {
         statusRequest = StatusRequest.failure;
       }
@@ -44,32 +46,40 @@ class CartControllerImpl extends CartController {
   }
 
   @override
-  void removeItem(int cartID) async {
-    await cartData.removeItem(
-        myServices.sharedpref.getInt(AppSharedPrefKeys.userID).toString(),
-        cartID.toString());
-
-    cartItemsList.removeWhere((item) => item["cartID"] == cartID);
+  void removeItem(int cartID, int itemCount) async {
+    var response =await cartData.removeItem(
+      myServices.sharedpref.getInt(AppSharedPrefKeys.userID).toString(),
+      cartID.toString(),
+      itemCount.toString(),
+    );
+    cartItems.removeWhere((item) => item["cartID"] == cartID);
+    if (responseResult(response)!) {
+      getData();
+    }
+    update();
   }
 
   @override
-  void putItem(int itemID) async {
+  void putItem(int itemID, int itemCount) async {
     var response = await cartData.putItem(
-        myServices.sharedpref.getInt(AppSharedPrefKeys.userID).toString(),
-        itemID.toString());
-    if(responseResult(response)!) {
+      myServices.sharedpref.getInt(AppSharedPrefKeys.userID).toString(),
+      itemID.toString(),
+      itemCount: itemCount.toString(),
+    );
+    if (responseResult(response)!) {
       getData();
     }
+    update();
   }
 
   bool? responseResult(var response) {
     if (response["status"] == "failure") {
       return false;
-    } else if(response["status"] == "success") {
+    } else if (response["status"] == "success") {
       return true;
     }
-    return null ;
-    }
+    return null;
+  }
 
   @override
   void onInit() {
