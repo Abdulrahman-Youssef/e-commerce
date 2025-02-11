@@ -1,4 +1,5 @@
 import 'package:ecommerce_app_w/controller/homescreen_controller.dart';
+import 'package:ecommerce_app_w/core/constant/approutes.dart';
 import 'package:ecommerce_app_w/view/widget/home/custombottomappbar.dart';
 import 'package:ecommerce_app_w/view/widget/home/customappbarbutton.dart';
 import 'package:flutter/cupertino.dart';
@@ -19,7 +20,9 @@ class HomeScreen extends StatelessWidget {
           height: 100,
           width: 70,
           child: FloatingActionButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, AppRoutes.cartScreen);
+            },
             shape: const CircleBorder(),
             child: const Icon(
               Icons.shopify,
@@ -28,6 +31,7 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+
         bottomNavigationBar: const CustomBottomAppbar(),
       );
     });

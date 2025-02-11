@@ -1,6 +1,7 @@
 import 'package:ecommerce_app_w/core/class/statusRequest.dart';
 import 'package:ecommerce_app_w/core/constant/sharedprefkeys.dart';
 import 'package:ecommerce_app_w/data/datasource/remote/cart/cart_data.dart';
+import 'package:ecommerce_app_w/data/model/cart_item.dart';
 import 'package:ecommerce_app_w/global/user.dart';
 import 'package:ecommerce_app_w/services/services.dart';
 import 'package:get/get.dart';
@@ -15,6 +16,7 @@ abstract class CartController extends GetxController {
 
 class CartControllerImpl extends CartController {
   List cartItemsList = [].obs;
+  List<CartItem> cartItem = <CartItem>[].obs;
 
   CartData cartData = CartData(Get.find());
   MyServices myServices = Get.find();
@@ -41,6 +43,7 @@ class CartControllerImpl extends CartController {
     update();
   }
 
+  @override
   void removeItem(int cartID) async {
     await cartData.removeItem(
         myServices.sharedpref.getInt(AppSharedPrefKeys.userID).toString(),
@@ -76,7 +79,6 @@ class CartControllerImpl extends CartController {
 
   @override
   void onClose() {
-    // TODO: implement onClose
     super.onClose();
     print('this is the onClose in the cart implement');
   }

@@ -9,6 +9,7 @@ import 'package:ecommerce_app_w/view/screen/auth/forgetpassword/resetpassword.da
 import 'package:ecommerce_app_w/view/screen/auth/signup.dart';
 import 'package:ecommerce_app_w/view/screen/auth/success_singup.dart';
 import 'package:ecommerce_app_w/view/screen/auth/forgetpassword/verfiycode.dart';
+import 'package:ecommerce_app_w/view/screen/cartScreen.dart';
 import 'package:ecommerce_app_w/view/screen/favoritescreen.dart';
 import 'package:ecommerce_app_w/view/screen/home/home.dart';
 import 'package:ecommerce_app_w/view/screen/home/homescreen.dart';
@@ -32,7 +33,7 @@ List<GetPage<dynamic>>? routes = [
   //used to go to the page im working on
   // GetPage(
   //     name: "/",
-  //     page: () => const ShowItem()),
+  //     page: () => const CartScreen()),
   // auth routes
 
   GetPage(
@@ -97,5 +98,9 @@ List<GetPage<dynamic>>? routes = [
   GetPage(
     name: AppRoutes.settingScreen,
     page: () =>   SettingScreen(),
+  ),
+  GetPage(
+    name: AppRoutes.cartScreen,
+    page: () =>   const CartScreen(),
   ),
 ];
