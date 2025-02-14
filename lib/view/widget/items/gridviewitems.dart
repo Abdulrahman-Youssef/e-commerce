@@ -42,7 +42,7 @@ class CustomGridViewItems extends StatelessWidget {
           // Title Text with max lines and ellipsis
           Text(
             "${itemsModel.itemsName}",
-            maxLines: 2,
+            maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: const TextStyle(
               fontSize: 16,
@@ -56,6 +56,8 @@ class CustomGridViewItems extends StatelessWidget {
             children: [
               Text(
                 "Price: ${itemsModel.itemsPrice}\$",
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
                 style: const TextStyle(fontFamily: "sans", fontSize: 14),
               ),
               GetBuilder<ItemsControllerImp>(builder: (controller) {
@@ -74,42 +76,3 @@ class CustomGridViewItems extends StatelessWidget {
     );
   }
 }
-
-// GridView.builder(
-// gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-// crossAxisSpacing: 3,
-// mainAxisSpacing: 0,
-// crossAxisCount: 2,
-// ),
-// shrinkWrap: true,
-// itemCount: controller.items.length,
-// itemBuilder: (BuildContext context, int index) {
-// // items cards
-// return Container(
-// // color: Colors.black,
-// margin: const EdgeInsets.symmetric(
-// vertical: 0,
-// ),
-// child: Column(
-// children: [
-// Image.asset(
-// "${AppImageAssets.rootImageItems}/${controller.items[index]["items_image"]}",
-// width: 140,
-// ),
-// Text("${controller.items[index]["items_name"]}"),
-// Row(
-// mainAxisAlignment: MainAxisAlignment.spaceBetween,
-// children: [
-// Text(
-// "price : ${controller.items[index]["items_price"]} \$",
-// style: const TextStyle(fontFamily: "sans"),
-// ),
-// IconButton(
-// onPressed: () {},
-// icon: const Icon(Icons.favorite_border))
-// ],
-// ),
-// ],
-// ));
-// },
-// )

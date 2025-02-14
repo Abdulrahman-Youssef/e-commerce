@@ -18,28 +18,59 @@ class CartScreen extends StatelessWidget {
         CartControllerImpl()); //  you have to put the controller so getBuilder can find it
     return GetBuilder<CartControllerImpl>(builder: (controller) {
       return Scaffold(
-        backgroundColor: AppColor.backgroundcolor,
-        appBar: AppBar(
-          title: const Center(
-              child: Text(
-            "Cart",
-            style: TextStyle(fontWeight: FontWeight.bold),
-          )),
-        ),
-        body: ListView(
-          children: [
-            ...List.generate(controller.cartItems.length, (index) {
-              print( "hiiiiiiiiiiiiiiiiiiiiiiiiii");
-              return SizedBox(
-                // height: ,
-                child: CartItemList(
-                  cartItem: CartItemModel.fromJson(controller.cartItems[index]),
+          backgroundColor: AppColor.backgroundcolor,
+          appBar: AppBar(
+            title: const Center(
+                child: Text(
+              "Cart",
+              style: TextStyle(fontWeight: FontWeight.bold),
+            )),
+          ),
+          body: ListView(
+            children: [
+              ...List.generate(controller.cartItems.length, (index) {
+                return SizedBox(
+                  // height: ,
+                  child: CartItemList(
+                    cartItem:
+                        controller.cartItems[index],
+                  ),
+                );
+              }),
+            ],
+          ),
+          bottomNavigationBar: SafeArea(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Text(
+                      "Total price",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    Text("2300 \$"),
+                  ],
                 ),
-              );
-            })
-          ],
-        ),
-      );
+                TextButton(
+                  onPressed: () {},
+                  style: ButtonStyle(
+                      backgroundColor: WidgetStateProperty.all<Color>(
+                          AppColor.primaryColor)),
+                  child: const SizedBox(
+                    width: 280,
+                    child: Center(
+                      child: Text(
+                        "Place order",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ));
     });
   }
 }

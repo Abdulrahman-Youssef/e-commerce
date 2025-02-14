@@ -14,11 +14,15 @@ abstract class CartController extends GetxController {
   removeItem(int cartID, int itemCount);
 
   putItem(int itemID, int itemCount);
+
+  increaseItemCount(int cartID);
+
+  decreaseItemCount(int cartID);
 }
 
 class CartControllerImpl extends CartController {
-  List cartItems = [].obs;
-  List<CartItemModel> cartItem = <CartItemModel>[].obs;
+  // List cartItems = [].obs;
+  List<CartItemModel> cartItems = <CartItemModel>[].obs;
 
   CartData cartData = CartData(Get.find());
   MyServices myServices = Get.find();
@@ -37,7 +41,9 @@ class CartControllerImpl extends CartController {
     statusRequest = handlingData(response);
     if (StatusRequest.success == statusRequest) {
       if (response["status"] == "success") {
-        cartItems = response["data"];
+        cartItems.assignAll((response["data"] as List)
+            .map((e) => CartItemModel.fromJson(e))
+            .toList());
       } else {
         statusRequest = StatusRequest.failure;
       }
@@ -47,12 +53,12 @@ class CartControllerImpl extends CartController {
 
   @override
   void removeItem(int cartID, int itemCount) async {
-    var response =await cartData.removeItem(
+    var response = await cartData.removeItem(
       myServices.sharedpref.getInt(AppSharedPrefKeys.userID).toString(),
       cartID.toString(),
       itemCount.toString(),
     );
-    cartItems.removeWhere((item) => item["cartID"] == cartID);
+    // cartItems.removeWhere((item) => item.cartID == cartID);
     if (responseResult(response)!) {
       getData();
     }
@@ -91,5 +97,23 @@ class CartControllerImpl extends CartController {
   void onClose() {
     super.onClose();
     print('this is the onClose in the cart implement');
+  }
+
+  @override
+  decreaseItemCount(int cartID) {
+    int index = cartItems.indexWhere((item) => item.cartID == cartID);
+    if (index != -1) {
+      cartItems[index].itemCount = (cartItems[index].itemCount ?? 0) + 1;
+      update(); // Notify the UI to update
+    }
+  }
+
+  @override
+  increaseItemCount(int cartID) {
+    int index = cartItems.indexWhere((item) => item.cartID == cartID);
+    if (index != -1) {
+      cartItems[index].itemCount = (cartItems[index].itemCount ?? 0) - 1;
+      update(); // Notify the UI to update
+    }
   }
 }

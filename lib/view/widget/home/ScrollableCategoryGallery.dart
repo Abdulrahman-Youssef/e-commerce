@@ -29,7 +29,6 @@ class ScrollableCategoryGallery extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemCount: controller.categories.length,
         itemBuilder: (context, index) {
-
           return InkWell(
             onTap: (){
                selectedCategory = index;
@@ -73,35 +72,3 @@ class ScrollableCategoryGallery extends StatelessWidget {
   }
 }
 
-
-
-
-// Container(
-// height: 100,
-// decoration: BoxDecoration(
-// color: AppColor.backgroundcolor,
-// // border: Border.all(color: Colors.blue)
-// ),
-// child: ListView.separated(
-// scrollDirection: Axis.horizontal,
-// // itemCount: controller.categories.length,
-// itemCount: controller.categories.length,
-// itemBuilder: (context, index) {
-// return Container(
-// margin: const EdgeInsets.symmetric(
-// vertical: 30, horizontal: 10),
-// decoration: BoxDecoration(
-// color: AppColor.backgroundcolor,
-// ),
-// child: Image.asset(
-// width: 50,
-// "${AppImageAssets.rootImageCategories}/${controller.categories[index]["categories_image"]}",
-// fit: BoxFit.contain,
-// // Adjust the fit if necessary
-// ));
-// },
-// separatorBuilder: (BuildContext context, int index) {
-// return const SizedBox(width: 10);
-// },
-// ),
-// )
