@@ -39,7 +39,7 @@ class HomeScreenControllerImp extends HomeScreenController {
     FavoriteScreen(),
     const ProfileScreen(),
      SettingScreen(),
-    const SearchScreen(),
+    // const SearchScreen(),
   ];
 
   @override

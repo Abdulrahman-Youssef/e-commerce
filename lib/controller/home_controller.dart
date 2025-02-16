@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:ecommerce_app_w/controller/search_controller.dart';
 import 'package:ecommerce_app_w/core/class/statusRequest.dart';
 import 'package:ecommerce_app_w/core/constant/approutes.dart';
 import 'package:ecommerce_app_w/core/constant/sharedprefkeys.dart';
@@ -23,7 +24,7 @@ class HomeControllerImplementation extends HomeController {
   MyServices myServices = Get.find();
   HomeData homeData = HomeData(Get.find());
   String? userName;
-
+  SearchControllerImpl searchControllerImpl = Get.put(SearchControllerImpl());
   int? userID;
 
   StatusRequest statusRequest = StatusRequest.notAssigned;
@@ -81,7 +82,7 @@ class HomeControllerImplementation extends HomeController {
     Get.toNamed(AppRoutes.search, arguments: {
       "searchWord": searchWord,
     });
-    
+    searchControllerImpl.getData(searchWord);
     update();
   }
 }
