@@ -1,9 +1,11 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:ecommerce_app_w/core/class/statusRequest.dart';
 import 'package:ecommerce_app_w/core/constant/sharedprefkeys.dart';
 import 'package:ecommerce_app_w/data/datasource/remote/cart/cart_data.dart';
 import 'package:ecommerce_app_w/data/model/cart_item.dart';
 import 'package:ecommerce_app_w/global/user.dart';
 import 'package:ecommerce_app_w/services/services.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 import '../core/function/handlingdatacontroller.dart';
@@ -18,16 +20,17 @@ abstract class CartController extends GetxController {
   increaseItemCount(int cartID);
 
   decreaseItemCount(int cartID);
+  
+  _getTotalPrice();
 }
 
 class CartControllerImpl extends CartController {
   // List cartItems = [].obs;
   List<CartItemModel> cartItems = <CartItemModel>[].obs;
-
   CartData cartData = CartData(Get.find());
   MyServices myServices = Get.find();
   late StatusRequest statusRequest;
-
+  double totalPrice = 0;
   @override
   void initialData() {
     getData();
@@ -46,8 +49,14 @@ class CartControllerImpl extends CartController {
             .toList());
       } else {
         statusRequest = StatusRequest.failure;
+        print("clear the cartItems ");
+        cartItems.clear();
       }
+    }else{
+      print("clear the cartItems ");
+      cartItems.clear();
     }
+    _getTotalPrice();
     update();
   }
 
@@ -113,7 +122,15 @@ class CartControllerImpl extends CartController {
     int index = cartItems.indexWhere((item) => item.cartID == cartID);
     if (index != -1) {
       cartItems[index].itemCount = (cartItems[index].itemCount ?? 0) - 1;
-      update(); // Notify the UI to update
+      update();
     }
+  }
+
+  @override
+  _getTotalPrice() {
+    totalPrice= 0 ;
+    cartItems.forEach((element){
+      totalPrice +=  element.itemsPrice! * element.itemCount!;
+    });
   }
 }

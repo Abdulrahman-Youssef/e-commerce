@@ -11,8 +11,12 @@ import 'package:get/get.dart';
 
 abstract class HomeController extends GetxController {
   initialData();
+
   getData();
-  goToItems(List categories ,int selectedCategory );
+
+  goToItems(List categories, int selectedCategory);
+
+  toSearchScreen(String searchWord);
 }
 
 class HomeControllerImplementation extends HomeController {
@@ -37,15 +41,13 @@ class HomeControllerImplementation extends HomeController {
         categories.addAll(response["categories"]);
         items.addAll(response["items"]);
         // getUser();
-        Get.defaultDialog(
-            title: "success fetched data",
-            middleText: "");
+        Get.defaultDialog(title: "success fetched data", middleText: "");
         update();
       }
     }
   }
 
-  getUser() async{
+  getUser() async {
     // User.user.usersId    = await myServices.sharedpref.getInt(AppSharedPrefKeys.userID);
     // User.user.usersName  = await myServices.sharedpref.getString(AppSharedPrefKeys.userName);
     // User.user.usersPhone = await myServices.sharedpref.getString(AppSharedPrefKeys.userPhone);
@@ -66,11 +68,20 @@ class HomeControllerImplementation extends HomeController {
   }
 
   @override
-  goToItems(List categories ,selectedCategory ) {
-      Get.toNamed(AppRoutes.items , arguments: {
-        "categories": categories,
-        "items" : items,
-        "selectedCategory": selectedCategory,
-      });
+  goToItems(List categories, selectedCategory) {
+    Get.toNamed(AppRoutes.items, arguments: {
+      "categories": categories,
+      "items": items,
+      "selectedCategory": selectedCategory,
+    });
+  }
+
+  @override
+  toSearchScreen(String searchWord) {
+    Get.toNamed(AppRoutes.search, arguments: {
+      "searchWord": searchWord,
+    });
+    
+    update();
   }
 }

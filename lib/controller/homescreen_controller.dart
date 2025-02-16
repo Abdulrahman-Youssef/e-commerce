@@ -1,6 +1,7 @@
 import 'package:ecommerce_app_w/view/screen/favoritescreen.dart';
 import 'package:ecommerce_app_w/view/screen/home/home.dart';
 import 'package:ecommerce_app_w/view/screen/profile.dart';
+import 'package:ecommerce_app_w/view/screen/search.dart';
 import 'package:ecommerce_app_w/view/screen/setting_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -38,6 +39,7 @@ class HomeScreenControllerImp extends HomeScreenController {
     FavoriteScreen(),
     const ProfileScreen(),
      SettingScreen(),
+    const SearchScreen(),
   ];
 
   @override

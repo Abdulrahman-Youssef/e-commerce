@@ -8,6 +8,7 @@ class AppLink {
   //pages
   static const String test = "$server/test.php";
   static const String home = "$server/home.php";
+  static const String search = "$server/search.php";
 
 
   // auth folder

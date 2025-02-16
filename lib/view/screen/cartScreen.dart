@@ -14,63 +14,83 @@ class CartScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(
-        CartControllerImpl()); //  you have to put the controller so getBuilder can find it
+    Get.put(CartControllerImpl()); // Initialize the controller
     return GetBuilder<CartControllerImpl>(builder: (controller) {
       return Scaffold(
-          backgroundColor: AppColor.backgroundcolor,
-          appBar: AppBar(
-            title: const Center(
-                child: Text(
+        backgroundColor: AppColor.backgroundcolor,
+        appBar: AppBar(
+          title: const Center(
+            child: Text(
               "Cart",
               style: TextStyle(fontWeight: FontWeight.bold),
-            )),
+            ),
           ),
-          body: ListView(
+        ),
+        body: Obx(() {
+          if (controller.cartItems.isEmpty) {
+            return Center(
+              child: Text(
+                "No items in your cart yet!",
+                style: TextStyle(fontSize: 18, color: Colors.grey[600]),
+              ),
+            );
+          }
+          return ListView(
             children: [
               ...List.generate(controller.cartItems.length, (index) {
                 return SizedBox(
-                  // height: ,
                   child: CartItemList(
-                    cartItem:
-                        controller.cartItems[index],
+                    cartItem: controller.cartItems[index],
                   ),
                 );
               }),
             ],
-          ),
-          bottomNavigationBar: SafeArea(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+          );
+        }),
+        bottomNavigationBar: SafeArea(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
+                    const Text(
                       "Total price",
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
-                    Text("2300 \$"),
+                    Text(
+                      "${controller.totalPrice} \$",
+                      style: const TextStyle(fontWeight: FontWeight.bold),
+                    ),
                   ],
                 ),
-                TextButton(
-                  onPressed: () {},
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                child: TextButton(
+                  onPressed: () {
+                  },
                   style: ButtonStyle(
-                      backgroundColor: WidgetStateProperty.all<Color>(
-                          AppColor.primaryColor)),
-                  child: const SizedBox(
-                    width: 280,
-                    child: Center(
-                      child: Text(
-                        "Place order",
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
+                    backgroundColor: WidgetStateProperty.all<Color>(
+                        AppColor.primaryColor),
+                    minimumSize: WidgetStateProperty.all<Size>(
+                        const Size(double.infinity, 50)),
+                  ),
+                  child: const Text(
+                    "Place order",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
                     ),
                   ),
-                )
-              ],
-            ),
-          ));
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
     });
   }
 }
