@@ -130,7 +130,7 @@ class CartControllerImpl extends CartController {
   _getTotalPrice() {
     totalPrice= 0 ;
     cartItems.forEach((element){
-      totalPrice +=  element.itemsPrice! * element.itemCount!;
+      totalPrice +=  (element.itemsPrice! - (element.itemsPrice! * (element.itemsDiscount!) / 100 ) )  * element.itemCount!;
     });
   }
 }

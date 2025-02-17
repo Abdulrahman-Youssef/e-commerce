@@ -25,6 +25,9 @@ class AppImageAssets {
   static const String shoes = "$rootImageCategories/shoes category.png";
   // items
 
+  // images
+  static const String sale = "$rootImage/001-sale.png";
+
 
   // avatar
 

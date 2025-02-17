@@ -39,18 +39,23 @@ class WdItems extends StatelessWidget {
                           const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisSpacing: 8,
                         // mainAxisSpacing: 8,
-                        crossAxisCount: 2,
-                        childAspectRatio: .86,
+                        crossAxisCount: 1,
+                        childAspectRatio: 1.3,
                         // Adjusts the height to width ratio of each item
                       ),
                       shrinkWrap: true,
                       itemCount: controller.items.length,
                       itemBuilder: (BuildContext context, int index) {
-                        return InkWell(
-                          onTap: (){controller.toShowItem(ItemsModel.fromJson(controller.items[index]));},
-                          child: CustomGridViewItems(
-                              itemsModel:
-                                  ItemsModel.fromJson(controller.items[index])),
+                        return Stack(
+                          children: [
+                            Image.asset(AppImageAssets.sale),
+                            InkWell(
+                              onTap: (){controller.toShowItem(ItemsModel.fromJson(controller.items[index]));},
+                              child: CustomGridViewItems(
+                                  itemsModel:
+                                      ItemsModel.fromJson(controller.items[index])),
+                            ),
+                          ],
                         );
                       }),
                 )

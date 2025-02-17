@@ -1,6 +1,7 @@
 import 'package:ecommerce_app_w/controller/cart_controller.dart';
 import 'package:ecommerce_app_w/core/constant/imageassets.dart';
 import 'package:ecommerce_app_w/data/model/cart_item.dart';
+import 'package:ecommerce_app_w/data/model/itemsmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -51,6 +52,34 @@ class CartItemList extends StatelessWidget {
                           const Divider(
                             color: Colors.transparent,
                           ),
+                          if(cartItem.itemsDiscount! > 0)
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                // Original Price with Strikethrough
+                                Text(
+                                  "\$${cartItem.itemsPrice}",
+                                  style: const TextStyle(
+                                    decoration: TextDecoration.lineThrough,
+                                    color: Colors.grey,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                    decorationThickness: 2,
+                                  ),
+                                ),
+                                const SizedBox(width: 8), // Spacing between prices
+                                // Discounted Price in Bold Red
+                                Text(
+                                  "\$${(cartItem.itemsPrice! - (cartItem.itemsPrice! * (cartItem.itemsDiscount! / 100))).toStringAsFixed(2)}",
+                                  style: const TextStyle(
+                                    color: Colors.red,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          if(cartItem.itemsDiscount! <= 0)
                           Text("Price: ${cartItem.itemsPrice} \$"),
                         ],
                       )),

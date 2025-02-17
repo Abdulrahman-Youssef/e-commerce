@@ -8,33 +8,21 @@ import 'package:get/get.dart';
 
 class ShowItem extends StatelessWidget {
   const ShowItem({super.key});
+
   //missing good management for Colors and rating
   @override
   Widget build(BuildContext context) {
     Get.put(ShowItemsControllerImpl());
     return SafeArea(
       child: Scaffold(
-        bottomNavigationBar: Container(
-          height: 40,
-          margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-          decoration: const BoxDecoration(
-            color: AppColor.primaryColor,
-          ),
-          child: GetBuilder<ShowItemsControllerImpl>(
-            builder: (controller) {
-              return TextButton(onPressed: () {
-                    controller.putItemToCard(controller.item.itemsId!);
-
-              }, child: const Text("Add to card"));
-            }
-          ),
-        ),
         body: GetBuilder<ShowItemsControllerImpl>(builder: (controller) {
           return Padding(
             padding: const EdgeInsets.all(8.0),
             child: ListView(
               children: [
-                ItemImage(item: controller.item,),
+                ItemImage(
+                  item: controller.item,
+                ),
                 Text(
                   "${controller.item.itemsName}",
                   style: const TextStyle(
@@ -46,14 +34,46 @@ class ShowItem extends StatelessWidget {
                 const SizedBox(
                   height: 10,
                 ),
-                Text(
-                  "Price: ${controller.item.itemsPrice}\$",
-                  style: const TextStyle(
-                    fontFamily: "sans",
-                    fontSize: 20,
-                    color: AppColor.black,
+                if (controller.item.itemsDiscount! > 0)
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      // Original Price with Strikethrough
+                      const Text(
+                        "Price:",
+                        style: TextStyle(fontWeight: FontWeight.w900),
+                      ),
+                      Text(
+                        "\$${controller.item.itemsPrice}",
+                        style: const TextStyle(
+                          decoration: TextDecoration.lineThrough,
+                          color: Colors.grey,
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                          decorationThickness: 2,
+                        ),
+                      ),
+                      const SizedBox(width: 8), // Spacing between prices
+                      // Discounted Price in Bold Red
+                      Text(
+                        "\$${(controller.item.itemsPrice! - (controller.item.itemsPrice! * (controller.item.itemsDiscount! / 100))).toStringAsFixed(2)}",
+                        style: const TextStyle(
+                          color: Colors.red,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
                   ),
-                ),
+                if (controller.item.itemsDiscount! <= 0)
+                  Text(
+                    "Price: ${controller.item.itemsPrice}\$",
+                    style: const TextStyle(
+                      fontFamily: "sans",
+                      fontSize: 20,
+                      color: AppColor.black,
+                    ),
+                  ),
                 // temporarily until itemColors work
                 const Text(
                   "colors: red white blue",
@@ -95,6 +115,20 @@ class ShowItem extends StatelessWidget {
             ),
           );
         }),
+        bottomNavigationBar: Container(
+          height: 40,
+          margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+          decoration: const BoxDecoration(
+            color: AppColor.primaryColor,
+          ),
+          child: GetBuilder<ShowItemsControllerImpl>(builder: (controller) {
+            return TextButton(
+                onPressed: () {
+                  controller.putItemToCard(controller.item.itemsId!);
+                },
+                child: const Text("Add to card"));
+          }),
+        ),
       ),
     );
   }
