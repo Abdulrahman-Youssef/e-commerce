@@ -17,45 +17,52 @@ class WdItems extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Get.put(ItemsControllerImp());
-    return Scaffold(
-      body: Container(
-        padding: const EdgeInsets.all(15),
-        child: GetBuilder<ItemsControllerImp>(builder: (controller) {
-          return ListView(
-            children: [
-              const CustomSearchAppBar(),
-              const SizedBox(
-                height: 20,
-              ),
-              const CategoriesList(),
-              const SizedBox(
-                height: 20,
-              ),
-              HandlingDataViewW(
-                statusRequest: controller.statusRequest,
-                widget: GridView.builder(
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisSpacing: 8,
-                      mainAxisSpacing: 8,
-                      crossAxisCount: 2,
-                      childAspectRatio: .9,
-                      // Adjusts the height to width ratio of each item
-                    ),
-                    shrinkWrap: true,
-                    itemCount: controller.items.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return InkWell(
-                        onTap: (){controller.toShowItem(ItemsModel.fromJson(controller.items[index]));},
-                        child: CustomGridViewItems(
-                            itemsModel:
-                                ItemsModel.fromJson(controller.items[index])),
-                      );
-                    }),
-              )
-            ],
-          );
-        }),
+    return SafeArea(
+      child: Scaffold(
+        body: Container(
+          padding: const EdgeInsets.all(15),
+          child: GetBuilder<ItemsControllerImp>(builder: (controller) {
+            return ListView(
+              children: [
+                const CustomSearchAppBar(),
+                const SizedBox(
+                  height: 20,
+                ),
+                const CategoriesList(),
+                const SizedBox(
+                  height: 20,
+                ),
+                HandlingDataViewW(
+                  statusRequest: controller.statusRequest,
+                  widget: GridView.builder(
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisSpacing: 8,
+                        // mainAxisSpacing: 8,
+                        crossAxisCount: 1,
+                        childAspectRatio: 1.3,
+                        // Adjusts the height to width ratio of each item
+                      ),
+                      shrinkWrap: true,
+                      itemCount: controller.items.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return Stack(
+                          children: [
+                            Image.asset(AppImageAssets.sale),
+                            InkWell(
+                              onTap: (){controller.toShowItem(ItemsModel.fromJson(controller.items[index]));},
+                              child: CustomGridViewItems(
+                                  itemsModel:
+                                      ItemsModel.fromJson(controller.items[index])),
+                            ),
+                          ],
+                        );
+                      }),
+                )
+              ],
+            );
+          }),
+        ),
       ),
     );
   }

@@ -3,6 +3,7 @@ class AppImageAssets {
   static const String rootImage = "assets/images";
   static const String rootImageCategories ="assets/images/categories";
   static const String rootImageItems ="assets/images/items";
+  static const String _rootImageAvatar ="assets/images/avatar";
   static const String rootlottie= "assets/lottie";
   //onboarding
   static const String logo  = "$rootImage/logo.png";
@@ -23,6 +24,15 @@ class AppImageAssets {
   static const String phones = "$rootImageCategories/phone category1.png";
   static const String shoes = "$rootImageCategories/shoes category.png";
   // items
+
+  // images
+  static const String sale = "$rootImage/001-sale.png";
+
+
+  // avatar
+
+  static const String girlAvatar = "$_rootImageAvatar/girl_avatar.jpeg";
+  static const String menAvatar = "$_rootImageAvatar/men_avatar.png";
 
 
 }

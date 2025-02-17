@@ -8,6 +8,7 @@ class AppLink {
   //pages
   static const String test = "$server/test.php";
   static const String home = "$server/home.php";
+  static const String search = "$server/search.php";
 
 
   // auth folder
@@ -32,5 +33,10 @@ class AppLink {
   static const String addRemove = "$favoriteFolder/addremove.php";
   static const String gettable = "$favoriteFolder/gettable.php";
 
+  // cart folder
+  static const String cartFolder = "$server/cart";
+  static const String cartPutItem = "$cartFolder/putItem.php";
+  static const String cartRemoveItem = "$cartFolder/removeItem.php";
+  static const String cartGetItems = "$cartFolder/getItems.php";
 
 }

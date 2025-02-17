@@ -27,8 +27,6 @@ class ItemsControllerImp extends ItemsController {
   FavoriteData favoriteData = FavoriteData(Get.find());
   ItemsData itemsData = ItemsData(Get.find());
   MyServices myServices = Get.find();
-  Icon favoriteIcon = const Icon(Icons.favorite_border);
-
   // bool isFavorite = false;
   List categories = [];
   List items = [];
