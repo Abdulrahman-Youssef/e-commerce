@@ -1,6 +1,7 @@
 import 'package:ecommerce_app_w/core/middlewere/mymiddleware.dart';
 import 'package:ecommerce_app_w/test.dart';
 import 'package:ecommerce_app_w/test_view.dart';
+import 'package:ecommerce_app_w/view/screen/address/address_screen.dart';
 import 'package:ecommerce_app_w/view/screen/auth/forgetpassword/forgetpassword.dart';
 import 'package:ecommerce_app_w/view/screen/auth/forgetpassword/successResetPassword.dart';
 import 'package:ecommerce_app_w/view/screen/auth/verifycodesignup.dart';
@@ -107,5 +108,9 @@ List<GetPage<dynamic>>? routes = [
   GetPage(
     name: AppRoutes.search,
     page: () =>   const SearchScreen(),
+  ),
+  GetPage(
+    name: AppRoutes.addressScreen,
+    page: () =>   const AddressScreen(),
   ),
 ];

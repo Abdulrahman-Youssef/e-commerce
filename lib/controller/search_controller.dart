@@ -19,12 +19,12 @@ class SearchControllerImpl extends SearchController {
   FavoriteData favoriteData = FavoriteData(Get.find());
   late StatusRequest statusRequest = StatusRequest.loading;
 
-
-
   getData(String searchWord) async {
     print("searchWord in search_controller = $searchWord");
     statusRequest = StatusRequest.loading;
-    var response = await searchData.getData(myServices.sharedpref.getInt(AppSharedPrefKeys.userID).toString() , searchWord);
+    var response = await searchData.getData(
+        myServices.sharedpref.getInt(AppSharedPrefKeys.userID).toString(),
+        searchWord);
     print("response $response");
     statusRequest = handlingData(response);
     if (StatusRequest.success == statusRequest) {
@@ -44,11 +44,15 @@ class SearchControllerImpl extends SearchController {
     update();
   }
 
-
   @override
   void onInit() async {
     super.onInit();
-    await getData( Get.arguments["searchWord"]);
+    String searchWord =
+    Get.arguments != null && Get.arguments is Map<String, dynamic>
+            ? Get.arguments["searchWord"] ?? ""
+            : "";
+
+    await getData(searchWord);
   }
 
   @override
@@ -58,9 +62,10 @@ class SearchControllerImpl extends SearchController {
     });
   }
 
-  void addToFavorite(int itemID) async
-  {
-    await favoriteData.addRemove(myServices.sharedpref.getInt(AppSharedPrefKeys.userID).toString(), itemID.toString());
+  void addToFavorite(int itemID) async {
+    await favoriteData.addRemove(
+        myServices.sharedpref.getInt(AppSharedPrefKeys.userID).toString(),
+        itemID.toString());
     for (var item in items) {
       if (item.itemsId == itemID) {
         item.favorite = item.favorite == 1 ? 0 : 1;
@@ -69,6 +74,4 @@ class SearchControllerImpl extends SearchController {
     }
     update();
   }
-
-
 }

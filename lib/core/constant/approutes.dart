@@ -18,6 +18,7 @@ class AppRoutes{
   static const String settingScreen = "/settingScreen";
   static const String cartScreen = "/cartScreen";
   static const String search = "/search";
+  static const String addressScreen = "/addressScreen";
 
 
 }

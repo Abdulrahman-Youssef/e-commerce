@@ -39,4 +39,10 @@ class AppLink {
   static const String cartRemoveItem = "$cartFolder/removeItem.php";
   static const String cartGetItems = "$cartFolder/getItems.php";
 
+
+  // address address
+
+
+
+
 }

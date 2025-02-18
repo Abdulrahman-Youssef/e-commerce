@@ -80,7 +80,7 @@ class HomeControllerImplementation extends HomeController {
   @override
   toSearchScreen(String searchWord) {
     Get.toNamed(AppRoutes.search, arguments: {
-      "searchWord": searchWord,
+      "searchWord": searchWord ?? "",
     });
     searchControllerImpl.getData(searchWord);
     update();
