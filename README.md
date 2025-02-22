@@ -1,14 +1,17 @@
-![IMG-20250222-WA0020](https://github.com/user-attachments/assets/0935b297-06df-477e-9431-f32efbfd215b)# e-commerce
+@@ -1,2 +1,53 @@
+# e-commerce
+a mobile e-commerce app
+# e-commerce
 A practice project to learn and experiment with various Flutter skills. This app includes multiple pages like onboarding, login, signup, product catalog, cart, and profile management.
 
 Note: This project is not complete yet. :)
 
-app pages 
+app pages
 
 first page:
 ![IMG-20250222-WA0018](https://github.com/user-attachments/assets/61a9989a-71dc-4124-8ace-7b8ddd96975e)
 
-on bording pages: 
+on boarding pages:
 ![IMG-20250222-WA0014](https://github.com/user-attachments/assets/a49d4071-e7c2-4cdd-b0cc-231772a05311)
 ![IMG-20250222-WA0015](https://github.com/user-attachments/assets/9f4164db-bde3-4226-bdcd-415358ad00a6)
 ![IMG-20250222-WA0016](https://github.com/user-attachments/assets/848918ba-34c2-40fb-a186-e1d4622a954b)
@@ -19,7 +22,7 @@ login page:
 ![IMG-20250222-WA0013](https://github.com/user-attachments/assets/4b9c5741-1502-4582-8292-ef968b3fdf35)
 
 
-sign up page: 
+sign up page:
 ![IMG-20250222-WA0012](https://github.com/user-attachments/assets/c26a2832-4032-4449-8b56-3a30a8f3789e)
 
 forget password and code the code:
@@ -31,17 +34,17 @@ home page:
 
 ![IMG-20250222-WA0009](https://github.com/user-attachments/assets/9d0edf39-50f1-47fa-9aed-1570ad18678d)
 
-favorite page: 
+favorite page:
 ![IMG-20250222-WA0008](https://github.com/user-attachments/assets/2f7df2d9-92a2-44d3-a599-9f141ca94af0)
 
-profile page: 
+profile page:
 ![IMG-20250222-WA0007](https://github.com/user-attachments/assets/45da35c3-46fc-451a-b9f1-8ca2ef14d596)
 
-choose methods: 
+choose methods:
 ![IMG-20250222-WA0006](https://github.com/user-attachments/assets/67c0ef5d-0943-4fb4-abc1-c26732014b88)
 ![IMG-20250222-WA0020](https://github.com/user-attachments/assets/65a52bdd-5c4e-4345-ad89-016a21b53b09)
 
-cart page: 
+cart page:
 ![IMG-20250222-WA0021](https://github.com/user-attachments/assets/6f19b70c-91a2-49b1-aece-87e9ed33c15f)
 
 search page:
