@@ -37,7 +37,7 @@ class HomeScreenControllerImp extends HomeScreenController {
   List<Widget> page = [
     const HomePage(),
     FavoriteScreen(),
-    const ProfileScreen(),
+     ProfileScreen(),
      SettingScreen(),
     // const SearchScreen(),
   ];
