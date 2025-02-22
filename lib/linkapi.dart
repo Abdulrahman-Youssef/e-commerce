@@ -41,6 +41,11 @@ class AppLink {
 
 
   // address address
+  static const String addressFolder = "$server/address";
+  static const String addressView = "$addressFolder/getView.php";
+  static const String addressRemove = "$addressFolder/remove.php";
+  static const String addressAdd = "$addressFolder/add.php";
+  static const String addressUpdate = "$addressFolder/update.php";
 
 
 
