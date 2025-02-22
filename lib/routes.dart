@@ -1,6 +1,11 @@
 import 'package:ecommerce_app_w/core/middlewere/mymiddleware.dart';
 import 'package:ecommerce_app_w/test.dart';
 import 'package:ecommerce_app_w/test_view.dart';
+import 'package:ecommerce_app_w/view/screen/Checkout/checkoutController.dart';
+import 'package:ecommerce_app_w/view/screen/Checkout/choose_methodes.dart';
+import 'package:ecommerce_app_w/view/screen/address/add_details.dart';
+import 'package:ecommerce_app_w/view/screen/address/add_location_screen.dart';
+import 'package:ecommerce_app_w/view/screen/address/address_screen.dart';
 import 'package:ecommerce_app_w/view/screen/auth/forgetpassword/forgetpassword.dart';
 import 'package:ecommerce_app_w/view/screen/auth/forgetpassword/successResetPassword.dart';
 import 'package:ecommerce_app_w/view/screen/auth/verifycodesignup.dart';
@@ -108,4 +113,26 @@ List<GetPage<dynamic>>? routes = [
     name: AppRoutes.search,
     page: () =>   const SearchScreen(),
   ),
+  GetPage(
+    name: AppRoutes.addressScreen,
+    page: () =>    AddressScreen(),
+  ),
+  GetPage(
+    name: AppRoutes.addLocation,
+    page: () =>    AddLocationScreen(),
+  ),
+  GetPage(
+    name: AppRoutes.addAddressDetails,
+    page: () =>    AddAddressDetails(),
+  ),
+GetPage(
+    name: AppRoutes.chooseMethodes,
+    page: () =>    ChooseMethodes(),
+  ),
+GetPage(
+    name: AppRoutes.addAddressDetails,
+    page: () =>    Checkout(),
+  ),
+
+
 ];

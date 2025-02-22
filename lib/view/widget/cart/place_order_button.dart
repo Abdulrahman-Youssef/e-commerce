@@ -33,7 +33,7 @@ class PlaceOrderButton extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: controller.toChooseMethodes,
                   style: ButtonStyle(
                     backgroundColor: WidgetStateProperty.all<Color>(
                         AppColor.primaryColor),
