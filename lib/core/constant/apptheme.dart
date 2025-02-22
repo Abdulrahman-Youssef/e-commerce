@@ -4,6 +4,9 @@ import 'package:ecommerce_app_w/core/constant/texttheme.dart';
 import 'package:flutter/material.dart';
 
 ThemeData themeEnglish = ThemeData(
+  appBarTheme: const AppBarTheme(
+    color: AppColor.primaryColor,
+  ),
       fontFamily: AppFontFamilies.playfairDisplay,
     primarySwatch: Colors.green,
     primaryColor: AppColor.primaryColor,

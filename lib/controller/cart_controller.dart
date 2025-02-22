@@ -1,5 +1,6 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:ecommerce_app_w/core/class/statusRequest.dart';
+import 'package:ecommerce_app_w/core/constant/approutes.dart';
 import 'package:ecommerce_app_w/core/constant/sharedprefkeys.dart';
 import 'package:ecommerce_app_w/data/datasource/remote/cart/cart_data.dart';
 import 'package:ecommerce_app_w/data/model/cart_item.dart';
@@ -20,7 +21,8 @@ abstract class CartController extends GetxController {
   increaseItemCount(int cartID);
 
   decreaseItemCount(int cartID);
-  
+  toChooseMethodes();
+
   _getTotalPrice();
 }
 
@@ -132,5 +134,12 @@ class CartControllerImpl extends CartController {
     cartItems.forEach((element){
       totalPrice +=  (element.itemsPrice! - (element.itemsPrice! * (element.itemsDiscount!) / 100 ) )  * element.itemCount!;
     });
+  }
+
+  @override
+  toChooseMethodes() {
+    if(cartItems.isNotEmpty) {
+      Get.toNamed(AppRoutes.chooseMethodes);
+    }
   }
 }
